@@ -1,0 +1,619 @@
+/**
+ * IBEX CRM — Design System
+ * Executive Dark Aesthetic
+ * "Trading Desk meets Premium SaaS"
+ *
+ * Token Architecture:
+ *   → Primitive tokens (raw values)
+ *   → Semantic tokens (contextual aliases)
+ *   → Component tokens (scoped overrides)
+ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   @layer: IMPORT
+   ───────────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   @layer: PRIMITIVE TOKENS — Raw Design Values
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+
+  /* ── Typography ──────────────────────────────────────────────────────── */
+  --font-sans:        'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:        'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+
+  --text-2xs:   0.625rem;   /*  10px */
+  --text-xs:    0.6875rem;  /*  11px */
+  --text-sm:    0.75rem;    /*  12px */
+  --text-base:  0.8125rem;  /*  13px */
+  --text-md:    0.875rem;   /*  14px */
+  --text-lg:    1rem;       /*  16px */
+  --text-xl:    1.125rem;   /*  18px */
+  --text-2xl:   1.25rem;    /*  20px */
+  --text-3xl:   1.5rem;     /*  24px */
+  --text-4xl:   1.875rem;   /*  30px */
+  --text-5xl:   2.25rem;    /*  36px */
+  --text-6xl:   3rem;       /*  48px */
+
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-extrabold: 800;
+
+  --leading-tight:   1.2;
+  --leading-snug:    1.35;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+  --leading-loose:   2;
+
+  --tracking-tighter: -0.04em;
+  --tracking-tight:   -0.02em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.02em;
+  --tracking-wider:    0.05em;
+  --tracking-widest:   0.12em;
+
+  /* ── Zinc Palette (Base Grays) ───────────────────────────────────────── */
+  --zinc-50:    #fafafa;
+  --zinc-100:   #f4f4f5;
+  --zinc-200:   #e4e4e7;
+  --zinc-300:   #d4d4d8;
+  --zinc-400:   #a1a1aa;
+  --zinc-500:   #71717a;
+  --zinc-600:   #52525b;
+  --zinc-700:   #3f3f46;
+  --zinc-800:   #27272a;
+  --zinc-850:   #1e1e21;
+  --zinc-900:   #18181b;
+  --zinc-925:   #111113;
+  --zinc-950:   #09090b;
+
+  /* ── Emerald Palette (Revenue / Success) ─────────────────────────────── */
+  --emerald-50:   #ecfdf5;
+  --emerald-100:  #d1fae5;
+  --emerald-200:  #a7f3d0;
+  --emerald-300:  #6ee7b7;
+  --emerald-400:  #34d399;
+  --emerald-500:  #10b981;
+  --emerald-600:  #059669;
+  --emerald-700:  #047857;
+  --emerald-800:  #065f46;
+  --emerald-900:  #064e3b;
+  --emerald-950:  #022c22;
+
+  /* ── Indigo Palette (Action / CTA / Navigation) ──────────────────────── */
+  --indigo-50:    #eef2ff;
+  --indigo-100:   #e0e7ff;
+  --indigo-200:   #c7d2fe;
+  --indigo-300:   #a5b4fc;
+  --indigo-400:   #818cf8;
+  --indigo-500:   #6366f1;
+  --indigo-600:   #4f46e5;
+  --indigo-700:   #4338ca;
+  --indigo-800:   #3730a3;
+  --indigo-900:   #312e81;
+  --indigo-950:   #1e1b4b;
+
+  /* ── Amber Palette (Warning / Alerts) ────────────────────────────────── */
+  --amber-50:    #fffbeb;
+  --amber-100:   #fef3c7;
+  --amber-200:   #fde68a;
+  --amber-300:   #fcd34d;
+  --amber-400:   #fbbf24;
+  --amber-500:   #f59e0b;
+  --amber-600:   #d97706;
+  --amber-700:   #b45309;
+  --amber-800:   #92400e;
+  --amber-900:   #78350f;
+
+  /* ── Rose Palette (Loss / Danger / Critical) ─────────────────────────── */
+  --rose-50:    #fff1f2;
+  --rose-100:   #ffe4e6;
+  --rose-200:   #fecdd3;
+  --rose-300:   #fda4af;
+  --rose-400:   #fb7185;
+  --rose-500:   #f43f5e;
+  --rose-600:   #e11d48;
+  --rose-700:   #be123c;
+  --rose-800:   #9f1239;
+  --rose-900:   #881337;
+
+  /* ── Sky Palette (Info / Metrics) ────────────────────────────────────── */
+  --sky-400:    #38bdf8;
+  --sky-500:    #0ea5e9;
+  --sky-600:    #0284c7;
+
+  /* ── Violet Palette (Secondary accent — used sparingly) ──────────────── */
+  --violet-400:  #a78bfa;
+  --violet-500:  #8b5cf6;
+
+  /* ── Spacing Scale ────────────────────────────────────────────────────── */
+  --space-0:   0;
+  --space-px:  1px;
+  --space-0-5: 0.125rem;   /*  2px */
+  --space-1:   0.25rem;    /*  4px */
+  --space-1-5: 0.375rem;   /*  6px */
+  --space-2:   0.5rem;     /*  8px */
+  --space-2-5: 0.625rem;   /* 10px */
+  --space-3:   0.75rem;    /* 12px */
+  --space-3-5: 0.875rem;   /* 14px */
+  --space-4:   1rem;       /* 16px */
+  --space-5:   1.25rem;    /* 20px */
+  --space-6:   1.5rem;     /* 24px */
+  --space-7:   1.75rem;    /* 28px */
+  --space-8:   2rem;       /* 32px */
+  --space-10:  2.5rem;     /* 40px */
+  --space-12:  3rem;       /* 48px */
+  --space-14:  3.5rem;     /* 56px */
+  --space-16:  4rem;       /* 64px */
+  --space-20:  5rem;       /* 80px */
+  --space-24:  6rem;       /* 96px */
+  --space-32:  8rem;       /* 128px */
+
+  /* ── Border Radius ────────────────────────────────────────────────────── */
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-2xl:  16px;
+  --radius-3xl:  20px;
+  --radius-full: 9999px;
+
+  /* ── Border Width ─────────────────────────────────────────────────────── */
+  --border-xs:   0.5px;
+  --border-sm:   1px;
+  --border-md:   1.5px;
+  --border-lg:   2px;
+
+  /* ── Z-Index Scale ────────────────────────────────────────────────────── */
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:    10;
+  --z-dropdown:  100;
+  --z-sticky:    200;
+  --z-overlay:   300;
+  --z-modal:     400;
+  --z-popover:   500;
+  --z-toast:     600;
+  --z-tooltip:   700;
+  --z-top:       9999;
+
+  /* ── Easing & Duration ────────────────────────────────────────────────── */
+  --ease-linear:       linear;
+  --ease-in:           cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:          cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out:       cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-expo:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart:    cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-back:     cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-back:      cubic-bezier(0.36, 0, 0.66, -0.56);
+  --ease-spring:       cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  --duration-instant:  50ms;
+  --duration-fast:     100ms;
+  --duration-quick:    150ms;
+  --duration-normal:   200ms;
+  --duration-moderate: 300ms;
+  --duration-slow:     400ms;
+  --duration-slower:   500ms;
+  --duration-glass:    600ms;
+  --duration-stagger:  40ms;   /* per-item offset in list animations */
+
+  /* ── Blur Levels ──────────────────────────────────────────────────────── */
+  --blur-xs:   4px;
+  --blur-sm:   8px;
+  --blur-md:   16px;
+  --blur-lg:   24px;
+  --blur-xl:   40px;
+  --blur-2xl:  64px;
+
+  /* ── Shadow Tokens ────────────────────────────────────────────────────── */
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.4);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md:  0 4px 6px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3);
+  --shadow-lg:  0 10px 15px rgba(0,0,0,0.5), 0 4px 6px rgba(0,0,0,0.3);
+  --shadow-xl:  0 20px 25px rgba(0,0,0,0.55), 0 8px 10px rgba(0,0,0,0.35);
+  --shadow-2xl: 0 25px 50px rgba(0,0,0,0.7);
+
+  /* Accent glow shadows */
+  --shadow-emerald-sm: 0 0 12px rgba(52, 211, 153, 0.15);
+  --shadow-emerald-md: 0 0 24px rgba(52, 211, 153, 0.2);
+  --shadow-indigo-sm:  0 0 12px rgba(99, 102, 241, 0.15);
+  --shadow-indigo-md:  0 0 24px rgba(99, 102, 241, 0.2);
+
+  /* Glow ambiente de fundo — camada de profundidade premium atrás do app inteiro */
+  --color-ambient-glow-1: rgba(99, 102, 241, 0.10);
+  --color-ambient-glow-2: rgba(52, 211, 153, 0.06);
+  --shadow-amber-sm:   0 0 12px rgba(251, 191, 36, 0.15);
+  --shadow-rose-sm:    0 0 12px rgba(251, 113, 133, 0.15);
+
+  /* Inner highlight — creates glass ledge effect */
+  --shadow-inner-highlight: inset 0 1px 0 rgba(255,255,255,0.06);
+  --shadow-inner-subtle:    inset 0 0 0 1px rgba(255,255,255,0.04);
+
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   @layer: SEMANTIC TOKENS — Dark Theme (default)
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root,
+[data-theme="dark"] {
+
+  /* ── Canvas ───────────────────────────────────────────────────────────── */
+  --color-bg-base:          #050505;           /* Deep pitch black background */
+  --color-bg-subtle:        #0a0a0c;           /* Very faint shift */
+  --color-bg-surface:       rgba(24, 24, 27, 0.65);  /* zinc-900 transparent for cards */
+  --color-bg-elevated:      rgba(39, 39, 42, 0.75);  /* zinc-800 transparent for modals/nodes */
+  --color-bg-overlay:       rgba(63, 63, 70, 0.85);  /* zinc-700 transparent for tooltips */
+  --color-bg-muted:         rgba(63,63,70,0.5);
+  --color-bg-glass:         rgba(39,39,42,0.7);
+
+  /* ── Borders ──────────────────────────────────────────────────────────── */
+  --color-border-subtle:    rgba(255,255,255,0.04);
+  --color-border-default:   rgba(255,255,255,0.07);
+  --color-border-strong:    rgba(255,255,255,0.12);
+  --color-border-focus:     var(--indigo-500);
+  --color-border-success:   rgba(52, 211, 153, 0.3);
+  --color-border-danger:    rgba(251, 113, 133, 0.3);
+  --color-border-warning:   rgba(251, 191, 36, 0.3);
+
+  /* ── Text ─────────────────────────────────────────────────────────────── */
+  --color-text-primary:     #f8f8f8;           /* near-white, not pure */
+  --color-text-secondary:   var(--zinc-400);   /* #a1a1aa                   */
+  --color-text-tertiary:    #777780;   /* ajustado de var(--zinc-500)/#71717a p/ WCAG AA 4.5:1 (era 4.22:1) */
+  --color-text-disabled:    var(--zinc-600);   /* #52525b                   */
+  --color-text-inverse:     var(--zinc-950);
+  --color-text-link:        var(--indigo-400);
+  --color-text-success:     var(--emerald-400);
+  --color-text-danger:      var(--rose-400);
+  --color-text-warning:     var(--amber-400);
+  --color-text-info:        var(--sky-400);
+
+  /* ── Brand / Accent ───────────────────────────────────────────────────── */
+  --color-accent-primary:   var(--indigo-500);    /* CTA, nav active      */
+  --color-accent-primary-hover: var(--indigo-400);
+  --color-accent-secondary: var(--emerald-400); /* revenue, gain        */
+  --color-accent-secondary-hover: var(--emerald-300);
+  --color-accent-danger:    var(--rose-500);    /* loss, error          */
+  --color-accent-warning:   var(--amber-400);   /* alert, pending       */
+  --color-accent-info:      var(--sky-500);     /* info, neutral        */
+
+  /* ── Interactive States ───────────────────────────────────────────────── */
+  --color-interactive-hover:    rgba(255,255,255,0.04);
+  --color-interactive-active:   rgba(255,255,255,0.07);
+  --color-interactive-focus:    rgba(99, 102, 241, 0.15);
+  --color-interactive-selected: rgba(99, 102, 241, 0.12);
+
+  /* ── Sidebar / Nav ────────────────────────────────────────────────────── */
+  --color-sidebar-bg:           #0c0c0e;
+  --color-sidebar-border:       rgba(255,255,255,0.05);
+  --color-sidebar-item-hover:   rgba(255,255,255,0.04);
+  --color-sidebar-item-active:  rgba(99, 102, 241, 0.15);
+  --color-sidebar-item-active-border: var(--indigo-500);
+
+  /* ── Status Chips ─────────────────────────────────────────────────────── */
+  --color-status-new-bg:        rgba(99, 102, 241, 0.12);
+  --color-status-new-text:      var(--indigo-300);
+  --color-status-new-border:    rgba(99, 102, 241, 0.25);
+
+  --color-status-qualified-bg:  rgba(52, 211, 153, 0.1);
+  --color-status-qualified-text: var(--emerald-400);
+  --color-status-qualified-border: rgba(52, 211, 153, 0.25);
+
+  --color-status-proposal-bg:   rgba(251, 191, 36, 0.1);
+  --color-status-proposal-text: var(--amber-400);
+  --color-status-proposal-border: rgba(251, 191, 36, 0.25);
+
+  --color-status-negotiation-bg:  rgba(56, 189, 248, 0.1);
+  --color-status-negotiation-text: var(--sky-400);
+  --color-status-negotiation-border: rgba(56, 189, 248, 0.25);
+
+  --color-status-won-bg:        rgba(52, 211, 153, 0.14);
+  --color-status-won-text:      var(--emerald-300);
+  --color-status-won-border:    rgba(52, 211, 153, 0.35);
+
+  --color-status-lost-bg:       rgba(251, 113, 133, 0.1);
+  --color-status-lost-text:     var(--rose-400);
+  --color-status-lost-border:   rgba(251, 113, 133, 0.25);
+
+  /* ── Priority ─────────────────────────────────────────────────────────── */
+  --color-priority-low-bg:       rgba(113, 113, 122, 0.12);
+  --color-priority-low-text:     var(--zinc-400);
+  --color-priority-medium-bg:    rgba(251, 191, 36, 0.1);
+  --color-priority-medium-text:  var(--amber-400);
+  --color-priority-high-bg:      rgba(251, 113, 133, 0.12);
+  --color-priority-high-text:    var(--rose-400);
+  --color-priority-urgent-bg:    rgba(251, 113, 133, 0.2);
+  --color-priority-urgent-text:  var(--rose-300);
+
+  /* ── Heat Score (Lead Scoring) ────────────────────────────────────────── */
+  --color-heat-cold:    var(--sky-400);
+  --color-heat-warm:    var(--amber-400);
+  --color-heat-hot:     var(--rose-400);
+  --color-heat-burning: #ff4500;
+
+  /* ── Kanban Column Accents ────────────────────────────────────────────── */
+  --color-kanban-new:         var(--indigo-500);
+  --color-kanban-qualified:   var(--sky-500);
+  --color-kanban-proposal:    var(--amber-500);
+  --color-kanban-negotiation: var(--violet-500);
+  --color-kanban-won:         var(--emerald-500);
+  --color-kanban-lost:        var(--rose-500);
+
+  /* ── Scrollbar ────────────────────────────────────────────────────────── */
+  --color-scrollbar-track: rgba(255,255,255,0.02);
+  --color-scrollbar-thumb: rgba(255,255,255,0.1);
+  --color-scrollbar-thumb-hover: rgba(255,255,255,0.18);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   @layer: LIGHT THEME OVERRIDES
+   ───────────────────────────────────────────────────────────────────────── */
+
+[data-theme="light"] {
+
+  --color-bg-base:          #f8f8fa;
+  --color-bg-subtle:        #f1f1f4;
+  --color-bg-surface:       #ffffff;
+  --color-bg-elevated:      #ffffff;
+  --color-bg-overlay:       #f4f4f6;
+  --color-bg-muted:         rgba(244,244,246,0.8);
+  --color-bg-glass:         rgba(255,255,255,0.8);
+
+  --color-border-subtle:    rgba(0,0,0,0.04);
+  --color-border-default:   rgba(0,0,0,0.08);
+  --color-border-strong:    rgba(0,0,0,0.14);
+
+  --color-text-primary:     #0f0f11;
+  --color-text-secondary:   #5a5a68;
+  --color-text-tertiary:    #8a8a96;
+  --color-text-disabled:    #b4b4be;
+  --color-text-inverse:     #f8f8f8;
+
+  --color-sidebar-bg:       #ffffff;
+  --color-sidebar-border:   rgba(0,0,0,0.06);
+  --color-sidebar-item-hover:   rgba(0,0,0,0.04);
+  --color-sidebar-item-active:  rgba(99, 102, 241, 0.08);
+
+  --color-interactive-hover:    rgba(0,0,0,0.04);
+  --color-interactive-active:   rgba(0,0,0,0.07);
+  --color-interactive-focus:    rgba(99, 102, 241, 0.12);
+  --color-interactive-selected: rgba(99, 102, 241, 0.08);
+
+  --color-scrollbar-track: rgba(0,0,0,0.03);
+  --color-scrollbar-thumb: rgba(0,0,0,0.12);
+  --color-scrollbar-thumb-hover: rgba(0,0,0,0.22);
+
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.06);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-lg:  0 10px 15px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.05);
+  --shadow-xl:  0 20px 25px rgba(0,0,0,0.1), 0 8px 10px rgba(0,0,0,0.06);
+  --shadow-2xl: 0 25px 50px rgba(0,0,0,0.15);
+
+  --shadow-inner-highlight: inset 0 1px 0 rgba(255,255,255,0.9);
+  --shadow-inner-subtle:    inset 0 0 0 1px rgba(0,0,0,0.04);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   @layer: COMPONENT TOKENS — Scoped Defaults
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+
+  /* ── Layout ───────────────────────────────────────────────────────────── */
+  --sidebar-width:           240px;
+  --sidebar-width-collapsed: 64px;
+  --topbar-height:           56px;
+  --content-max-width:       1440px;
+  --content-padding-x:       var(--space-6);
+  --content-padding-y:       var(--space-6);
+
+  /* ── Card Component ───────────────────────────────────────────────────── */
+  --card-bg:                 var(--color-bg-surface);
+  --card-border:             var(--color-border-default);
+  --card-radius:             var(--radius-xl);
+  --card-padding:            var(--space-5);
+  --card-shadow:             var(--shadow-sm);
+  --card-bg-gradient:        linear-gradient(
+                               135deg,
+                               rgba(255,255,255,0.03) 0%,
+                               rgba(255,255,255,0.01) 100%
+                             );
+  --card-hover-border:       rgba(255,255,255,0.12);
+  --card-hover-shadow:       var(--shadow-md);
+  --card-hover-transform:    translateY(-1px);
+
+  /* ── Button Component ─────────────────────────────────────────────────── */
+  --btn-radius:              var(--radius-lg);
+  --btn-font-size:           var(--text-sm);
+  --btn-font-weight:         var(--weight-semibold);
+  --btn-padding-x:           var(--space-4);
+  --btn-padding-y:           var(--space-2);
+  --btn-transition:          all var(--duration-normal) var(--ease-out-expo);
+  --btn-letter-spacing:      var(--tracking-wide);
+
+  /* Primary CTA */
+  --btn-primary-bg:          var(--indigo-600);
+  --btn-primary-bg-hover:    var(--indigo-500);
+  --btn-primary-text:        #ffffff;
+  --btn-primary-border:      transparent;
+  --btn-primary-shadow:      0 1px 2px rgba(0,0,0,0.3), var(--shadow-indigo-sm);
+
+  /* Secondary */
+  --btn-secondary-bg:        rgba(255,255,255,0.06);
+  --btn-secondary-bg-hover:  rgba(255,255,255,0.1);
+  --btn-secondary-text:      var(--color-text-primary);
+  --btn-secondary-border:    var(--color-border-default);
+
+  /* Danger */
+  --btn-danger-bg:           rgba(244, 63, 94, 0.12);
+  --btn-danger-bg-hover:     rgba(244, 63, 94, 0.2);
+  --btn-danger-text:         var(--rose-400);
+  --btn-danger-border:       rgba(244, 63, 94, 0.25);
+
+  /* Ghost */
+  --btn-ghost-bg:            transparent;
+  --btn-ghost-bg-hover:      var(--color-interactive-hover);
+  --btn-ghost-text:          var(--color-text-secondary);
+  --btn-ghost-text-hover:    var(--color-text-primary);
+
+  /* ── Input Component ──────────────────────────────────────────────────── */
+  --input-bg:                rgba(255,255,255,0.04);
+  --input-bg-hover:          rgba(255,255,255,0.06);
+  --input-bg-focus:          rgba(255,255,255,0.05);
+  --input-border:            var(--color-border-default);
+  --input-border-hover:      var(--color-border-strong);
+  --input-border-focus:      var(--indigo-500);
+  --input-text:              var(--color-text-primary);
+  --input-placeholder:       var(--color-text-tertiary);
+  --input-radius:            var(--radius-lg);
+  --input-padding-x:         var(--space-3);
+  --input-padding-y:         var(--space-2-5);
+  --input-font-size:         var(--text-md);
+  --input-shadow-focus:      0 0 0 3px rgba(99,102,241,0.15);
+
+  /* ── Modal ────────────────────────────────────────────────────────────── */
+  --modal-backdrop-bg:       rgba(0,0,0,0.7);
+  --modal-backdrop-blur:     var(--blur-sm);
+  --modal-bg:                var(--color-bg-elevated);
+  --modal-border:            var(--color-border-default);
+  --modal-radius:            var(--radius-2xl);
+  --modal-shadow:            var(--shadow-2xl);
+  --modal-max-width:         600px;
+  --modal-padding:           var(--space-6);
+
+  /* ── Toast Notification ───────────────────────────────────────────────── */
+  --toast-bg:                var(--color-bg-overlay);
+  --toast-border:            var(--color-border-default);
+  --toast-radius:            var(--radius-xl);
+  --toast-shadow:            var(--shadow-xl);
+  --toast-padding-x:         var(--space-4);
+  --toast-padding-y:         var(--space-3);
+  --toast-font-size:         var(--text-md);
+
+  /* ── Kanban ───────────────────────────────────────────────────────────── */
+  --kanban-column-width:       300px;
+  --kanban-column-gap:         var(--space-4);
+  --kanban-column-bg:          rgba(18,18,21,0.9);
+  --kanban-column-border:      var(--color-border-subtle);
+  --kanban-column-radius:      var(--radius-xl);
+  --kanban-card-bg:            var(--color-bg-surface);
+  --kanban-card-border:        var(--color-border-default);
+  --kanban-card-radius:        var(--radius-lg);
+  --kanban-card-padding:       var(--space-4);
+  --kanban-card-gap:           var(--space-3);
+  --kanban-drag-shadow:        var(--shadow-2xl);
+
+  /* ── Table ────────────────────────────────────────────────────────────── */
+  --table-row-hover-bg:        rgba(255,255,255,0.03);
+  --table-header-bg:           rgba(255,255,255,0.02);
+  --table-border-color:        var(--color-border-subtle);
+  --table-cell-padding-x:      var(--space-4);
+  --table-cell-padding-y:      var(--space-3);
+
+  /* ── Skeleton ─────────────────────────────────────────────────────────── */
+  --skeleton-bg:               rgba(255,255,255,0.04);
+  --skeleton-highlight:        rgba(255,255,255,0.08);
+  --skeleton-radius:           var(--radius-md);
+
+  /* ── Scrollbar ────────────────────────────────────────────────────────── */
+  --scrollbar-width:           6px;
+  --scrollbar-radius:          var(--radius-full);
+
+  /* ── Tooltip ──────────────────────────────────────────────────────────── */
+  --tooltip-bg:                var(--zinc-800);
+  --tooltip-text:              var(--zinc-100);
+  --tooltip-border:            var(--color-border-default);
+  --tooltip-radius:            var(--radius-md);
+  --tooltip-padding:           var(--space-2) var(--space-3);
+  --tooltip-font-size:         var(--text-xs);
+  --tooltip-shadow:            var(--shadow-lg);
+
+  /* ── Dropdown ─────────────────────────────────────────────────────────── */
+  --dropdown-bg:               var(--color-bg-elevated);
+  --dropdown-border:           var(--color-border-default);
+  --dropdown-radius:           var(--radius-xl);
+  --dropdown-shadow:           var(--shadow-xl);
+  --dropdown-padding-y:        var(--space-1-5);
+  --dropdown-item-padding-x:   var(--space-3);
+  --dropdown-item-padding-y:   var(--space-2);
+  --dropdown-item-hover-bg:    var(--color-interactive-hover);
+  --dropdown-item-font-size:   var(--text-md);
+
+  /* ── Badge ────────────────────────────────────────────────────────────── */
+  --badge-padding-x:           var(--space-2);
+  --badge-padding-y:           var(--space-0-5);
+  --badge-radius:              var(--radius-full);
+  --badge-font-size:           var(--text-xs);
+  --badge-font-weight:         var(--weight-semibold);
+  --badge-letter-spacing:      var(--tracking-wide);
+
+  /* ── Progress / Bar ───────────────────────────────────────────────────── */
+  --progress-track-bg:         rgba(255,255,255,0.06);
+  --progress-track-radius:     var(--radius-full);
+  --progress-track-height:     4px;
+  --progress-fill-emerald:     var(--emerald-500);
+  --progress-fill-indigo:      var(--indigo-500);
+  --progress-fill-amber:       var(--amber-500);
+
+  /* ── Avatar ───────────────────────────────────────────────────────────── */
+  --avatar-radius:             var(--radius-full);
+  --avatar-border:             var(--color-border-default);
+  --avatar-fallback-bg:        var(--indigo-600);
+  --avatar-fallback-text:      #ffffff;
+
+  /* ── Divider ──────────────────────────────────────────────────────────── */
+  --divider-color:             var(--color-border-subtle);
+  --divider-width:             1px;
+
+  /* ── Chart Colors ─────────────────────────────────────────────────────── */
+  --chart-color-1:   var(--indigo-500);
+  --chart-color-2:   var(--emerald-400);
+  --chart-color-3:   var(--amber-400);
+  --chart-color-4:   var(--sky-400);
+  --chart-color-5:   var(--rose-400);
+  --chart-color-6:   var(--violet-400);
+  --chart-grid:      rgba(255,255,255,0.04);
+  --chart-axis:      var(--zinc-600);
+  --chart-tooltip-bg: var(--zinc-900);
+
+  /* ── Film Grain Overlay ───────────────────────────────────────────────── */
+  --grain-opacity:   0.022;
+  --grain-size:      180px;
+
+  /* ── Misc ─────────────────────────────────────────────────────────────── */
+  --focus-ring:              0 0 0 2px var(--color-bg-base), 0 0 0 4px var(--indigo-500);
+  --focus-ring-danger:       0 0 0 2px var(--color-bg-base), 0 0 0 4px var(--rose-500);
+  --selection-bg:            rgba(99, 102, 241, 0.3);
+  --selection-text:          var(--color-text-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   @layer: UTILITY MIXINS (CSS custom properties as helpers)
+   These are referenced in animations.css and main.css
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+
+  /* Glass surface formula */
+  --glass-bg:      rgba(18,18,21,0.7);
+  --glass-border:  rgba(255,255,255,0.07);
+  --glass-blur:    var(--blur-md);
+  --glass-shadow:  var(--shadow-lg), var(--shadow-inner-highlight);
+
+  /* Elevated surface formula */
+  --surface-bg:      var(--color-bg-surface);
+  --surface-border:  var(--color-border-default);
+  --surface-shadow:  var(--shadow-sm), var(--shadow-inner-highlight);
+
+  /* Glow effect for active nav items */
+  --glow-indigo:  0 0 20px rgba(99,102,241,0.25), 0 0 40px rgba(99,102,241,0.1);
+  --glow-emerald: 0 0 20px rgba(52,211,153,0.2), 0 0 40px rgba(52,211,153,0.08);
+}

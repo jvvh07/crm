@@ -1,0 +1,332 @@
+/**
+ * IBEX CRM — Central de Integrações
+ * Grid de cards por categoria, modal de conexão, drawer de logs.
+ * @version 1.0.0
+ */
+
+.integrations-page {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.integrations-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* BUGFIX (auditoria visual): esta busca do topbar não tinha NENHUM estilo —
+   o <input type="search"> renderizava com a aparência nativa do navegador
+   (fundo branco, borda preta, ícone de busca nativo), destoando completamente
+   do tema escuro do resto da topbar. Reaproveita a mesma linguagem visual já
+   usada em .team-search-wrap para manter consistência entre as páginas. */
+.integrations-header-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 10px;
+  padding: 0 12px;
+  height: 34px;
+  color: var(--color-text-tertiary);
+  transition: border-color var(--duration-fast);
+  min-width: 200px;
+}
+
+.integrations-header-search:focus-within {
+  border-color: rgba(99,102,241,0.4);
+}
+
+.integrations-header-search input {
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+}
+
+.integrations-header-search input::placeholder { color: var(--color-text-disabled); }
+
+/* Remove o "x" nativo de limpar e o ícone de busca nativo do Chrome/Edge/Safari,
+   já que temos nosso próprio ícone SVG e um design consistente com o resto do app */
+.integrations-header-search input::-webkit-search-cancel-button,
+.integrations-header-search input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+@media (max-width: 900px) {
+  .integrations-header-search { display: none; }
+}
+
+.integrations-header-sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  margin-top: 4px;
+}
+
+.integrations-header-stats { display: flex; gap: 20px; }
+
+/* ── Barra de busca no topbar ─────────────────────────────────────────── */
+
+.integrations-page-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius-lg);
+  padding: 0 var(--space-3);
+  height: 36px;
+  min-width: 220px;
+  color: var(--color-text-tertiary);
+  transition: border-color var(--duration-normal);
+}
+
+.integrations-page-search:focus-within { border-color: rgba(99,102,241,0.4); }
+
+.integrations-page-search input {
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-text-primary);
+  font-size: 13px;
+}
+
+.integrations-page-search input::placeholder { color: var(--color-text-disabled); }
+
+/* ── Tabs de Categoria ────────────────────────────────────────────────── */
+
+.integrations-cat-tabs {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+
+.integrations-cat-tabs::-webkit-scrollbar { display: none; }
+
+.integ-cat-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.integ-cat-tab:hover { background: rgba(255,255,255,0.04); color: var(--color-text-secondary); }
+.integ-cat-tab.active {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.08);
+  color: var(--color-text-primary);
+}
+
+.integ-cat-tab-count {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255,255,255,0.08);
+  padding: 1px 6px;
+  border-radius: 99px;
+  color: var(--color-text-tertiary);
+}
+
+/* ── Grid de Integrações ──────────────────────────────────────────────── */
+
+.integrations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 14px;
+}
+
+.integ-card {
+  background: rgba(14, 14, 17, 0.8);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+  padding: 16px;
+  transition: all var(--duration-normal) var(--ease-out-expo);
+  position: relative;
+  overflow: hidden;
+}
+
+.integ-card::before {
+  content: '';
+  position: absolute; top: 0; left: 15%; right: 15%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+}
+
+.integ-card:hover {
+  border-color: var(--color-border-default);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+}
+
+.integ-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.integ-card-icon {
+  width: 38px; height: 38px;
+  border-radius: 11px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--color-border-subtle);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.integ-card-info { flex: 1; min-width: 0; }
+
+.integ-card-name {
+  font-size: 13px;
+  font-weight: var(--weight-bold);
+  color: var(--color-text-primary);
+}
+
+.integ-card-category {
+  font-size: 10px;
+  color: var(--color-text-disabled);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  margin-top: 1px;
+}
+
+.integ-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+
+.integ-card-status--connected { background: rgba(52,211,153,0.12); color: var(--emerald-400); }
+.integ-card-status--disconnected { background: rgba(161,161,170,0.1); color: var(--zinc-400); }
+
+.integ-status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+}
+
+.integ-card-status--connected .integ-status-dot { background: var(--emerald-400); }
+.integ-card-status--disconnected .integ-status-dot { background: var(--zinc-500); }
+
+.integ-card-sync {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 14px;
+  min-height: 15px;
+}
+
+.integ-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.integ-card-actions .btn { flex: 1; }
+
+/* ── Modal de Conexão ─────────────────────────────────────────────────── */
+
+.integ-modal-icon {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--color-border-subtle);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.integ-modal-disclaimer {
+  font-size: 11px;
+  color: var(--color-text-disabled);
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 4px 20px 0;
+  line-height: 1.5;
+}
+
+/* ── Drawer de Logs ───────────────────────────────────────────────────── */
+
+.integ-logs-drawer { width: 420px; }
+
+.integ-log-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  font-size: 12px;
+}
+
+.integ-log-item:last-child { border-bottom: none; }
+
+.integ-log-status-icon {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+  margin-top: 1px;
+}
+
+.integ-log-status-icon--success { background: rgba(52,211,153,0.15); color: var(--emerald-400); }
+.integ-log-status-icon--error   { background: rgba(244,63,94,0.15); color: var(--rose-400); }
+.integ-log-status-icon--info    { background: rgba(99,102,241,0.15); color: var(--indigo-400); }
+
+.integ-log-body { flex: 1; min-width: 0; }
+.integ-log-title { color: var(--color-text-primary); font-weight: 500; }
+.integ-log-time { color: var(--color-text-disabled); font-size: 11px; margin-top: 2px; }
+
+/* ── Empty state ──────────────────────────────────────────────────────── */
+
+.integ-empty {
+  padding: 64px 24px;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+.integ-empty-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--color-border-subtle);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-text-disabled);
+  margin: 0 auto 12px;
+}
+
+.integ-empty-title { font-size: 14px; font-weight: 600; color: var(--color-text-secondary); }
+.integ-empty-sub { font-size: 12px; color: var(--color-text-tertiary); margin-top: 4px; }
+
+/* ── Responsivo ───────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .integrations-page { padding: 20px; }
+  .integrations-grid { grid-template-columns: 1fr; }
+  .integrations-header { flex-direction: column; }
+  .integ-logs-drawer { width: 100%; }
+}

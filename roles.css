@@ -1,0 +1,258 @@
+/**
+ * IBEX CRM — Papéis e Permissões
+ * Grid de papéis com nível hierárquico + matriz de permissões (tabela).
+ * @version 1.0.0
+ */
+
+.roles-page {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.roles-header-sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  margin-top: 4px;
+  max-width: 640px;
+}
+
+/* ── Banner de aviso backend ──────────────────────────────────────────── */
+
+.roles-warning-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(251,191,36,0.06);
+  border: 1px solid rgba(251,191,36,0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--amber-400);
+}
+
+.roles-warning-banner svg { flex-shrink: 0; margin-top: 1px; }
+.roles-warning-banner a { color: inherit; text-decoration: underline; }
+
+/* ── Section headers ──────────────────────────────────────────────────── */
+
+.roles-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.roles-section-title {
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-tight);
+}
+
+.roles-count-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--color-border-subtle);
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+
+.roles-matrix-actions { display: flex; gap: 8px; }
+
+/* ── Lista de Papéis ──────────────────────────────────────────────────── */
+
+.roles-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.role-card {
+  background: rgba(14, 14, 17, 0.75);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 14px;
+  padding: 14px 16px;
+  transition: border-color var(--duration-normal);
+}
+
+.role-card:hover { border-color: var(--color-border-default); }
+
+.role-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.role-card-name {
+  font-size: 13px;
+  font-weight: var(--weight-bold);
+  color: var(--color-text-primary);
+}
+
+.role-card-perm-count {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--indigo-400);
+  background: rgba(99,102,241,0.1);
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+.role-card-level-track {
+  height: 4px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.role-card-level-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.6s var(--ease-out-expo);
+}
+
+.role-card-level-label {
+  font-size: 10px;
+  color: var(--color-text-disabled);
+  margin-top: 4px;
+}
+
+/* ── Matriz de Permissões (tabela) ────────────────────────────────────── */
+
+.roles-matrix-wrap {
+  background: rgba(11, 11, 14, 0.85);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+  overflow: auto;
+  max-height: 640px;
+}
+
+.roles-matrix-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+
+.roles-matrix-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: rgba(18, 18, 22, 0.98);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding: 10px 8px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  text-align: center;
+  min-width: 84px;
+}
+
+.roles-matrix-table thead th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  text-align: left;
+  min-width: 220px;
+  background: rgba(18, 18, 22, 0.98);
+}
+
+.roles-matrix-role-th {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.roles-matrix-role-name { font-size: 11px; }
+.roles-matrix-role-level {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--color-text-disabled);
+}
+
+.roles-matrix-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.025);
+}
+
+.roles-matrix-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.roles-matrix-cat-row td {
+  padding: 8px 12px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text-disabled);
+  background: rgba(255,255,255,0.02);
+  position: sticky;
+  left: 0;
+}
+
+.roles-matrix-table td.roles-matrix-perm-cell {
+  padding: 8px 12px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  position: sticky;
+  left: 0;
+  background: rgba(11, 11, 14, 0.97);
+  border-right: 1px solid var(--color-border-subtle);
+}
+
+.roles-matrix-table td.roles-matrix-checkbox-cell {
+  text-align: center;
+  padding: 6px 8px;
+}
+
+.roles-matrix-checkbox {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--indigo-500);
+  cursor: pointer;
+}
+
+.roles-matrix-checkbox:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Coluna de Super Admin sempre com tudo marcado — visualmente destacada */
+.roles-matrix-col-locked {
+  background: rgba(99,102,241,0.04);
+}
+
+/* Botão "marcar todas" no cabeçalho da categoria */
+.roles-matrix-cat-toggle-all {
+  font-size: 9px;
+  color: var(--indigo-400);
+  cursor: pointer;
+  margin-left: 8px;
+  text-decoration: underline;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 600;
+}
+
+/* Toggle "marcar todas" no cabeçalho de papel (coluna) */
+.roles-matrix-col-toggle-all {
+  font-size: 9px;
+  color: var(--color-text-disabled);
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 2px;
+}
+
+.roles-matrix-col-toggle-all:hover { color: var(--indigo-400); }
+
+/* ── Responsivo ───────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .roles-page { padding: 20px; }
+  .roles-list-grid { grid-template-columns: 1fr 1fr; }
+}

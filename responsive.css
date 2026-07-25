@@ -1,0 +1,392 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   IBEX CRM — responsive.css
+   Breakpoints:
+     • Large tablet / small laptop  → ≤ 1280px
+     • Tablet landscape             → ≤ 1024px
+     • Tablet portrait              → ≤ 768px
+     • Mobile                       → ≤ 640px
+     • Small mobile                 → ≤ 480px
+     • Extra small                  → ≤ 360px
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Large tablet / small laptop (≤ 1280px) ──────────────────────────── */
+@media (max-width: 1280px) {
+
+  /* Tighten chart side panel */
+  .charts-grid { grid-template-columns: 1fr 300px; }
+
+  /* Bottom grid: activity + tasks full, leaderboard below */
+  .bottom-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .bottom-grid > :last-child { grid-column: span 2; }
+
+  /* Topbar search: hide label text */
+  .topbar-search-label { display: none; }
+  .topbar-kbd          { display: none; }
+  .topbar-search-btn   { min-width: auto; padding: var(--space-2) var(--space-2-5); gap: var(--space-1-5); }
+}
+
+/* ── 2. Tablet landscape (≤ 1024px) ─────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  /* KPI grid: 2 columns */
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
+
+  /* Charts stacked */
+  .charts-grid { grid-template-columns: 1fr; gap: var(--space-3); }
+  .chart-card--side { max-width: 100%; }
+  .chart-wrap--donut { height: 180px; }
+
+  /* Revenue chart slightly shorter */
+  .chart-wrap { height: 220px; }
+
+  /* Bottom grid: 2 cols, leaderboard full */
+  .bottom-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+  .bottom-grid > :last-child { grid-column: span 2; }
+
+  /* Sidebar: collapse to icon mode on tablet */
+  .app-shell { grid-template-columns: var(--sidebar-width-collapsed) 1fr; }
+  .sidebar   { width: var(--sidebar-width-collapsed); }
+  .sidebar-collapse-btn { display: none; }
+  .nav-label, .nav-shortcut, .nav-badge, .nav-chip-new,
+  .sidebar-nav-label, .sidebar-user-info, .sidebar-user-chevron,
+  .sidebar-logo-text { opacity: 0; pointer-events: none; }
+  .main-wrap { min-width: 0; }
+
+  /* On tablet, expand sidebar when hovering */
+  .sidebar:hover {
+    width: var(--sidebar-width);
+    box-shadow: var(--shadow-2xl);
+    z-index: calc(var(--z-sticky) + 1);
+  }
+  .sidebar:hover .nav-label,
+  .sidebar:hover .nav-shortcut,
+  .sidebar:hover .nav-badge,
+  .sidebar:hover .nav-chip-new,
+  .sidebar:hover .sidebar-nav-label,
+  .sidebar:hover .sidebar-user-info,
+  .sidebar:hover .sidebar-user-chevron,
+  .sidebar:hover .sidebar-logo-text { opacity: 1; pointer-events: auto; }
+
+  /* Quota bar: wrap values */
+  .quota-bar-meta { flex-wrap: wrap; gap: var(--space-1-5); }
+
+  /* Topbar: show hamburger */
+  .topbar-menu-btn { display: none; }
+}
+
+/* ── 3. Tablet portrait (≤ 768px) ───────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* ── App Shell: sidebar goes off-canvas ─────────────────────────────── */
+  .app-shell { grid-template-columns: 1fr; }
+
+  .sidebar {
+    width: var(--sidebar-width) !important;
+    transform: translateX(-100%);
+    transition: transform var(--duration-moderate) var(--ease-out-expo),
+                box-shadow var(--duration-moderate) var(--ease-out-expo);
+    z-index: var(--z-overlay, 400);
+  }
+
+  /* Reshow all sidebar labels on mobile (sidebar is full width) */
+  .sidebar .nav-label,
+  .sidebar .nav-shortcut,
+  .sidebar .nav-badge,
+  .sidebar .nav-chip-new,
+  .sidebar .sidebar-nav-label,
+  .sidebar .sidebar-user-info,
+  .sidebar .sidebar-user-chevron,
+  .sidebar .sidebar-logo-text,
+  .sidebar .sidebar-collapse-btn {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  .sidebar .sidebar-collapse-btn { display: none; }
+
+  /* Mobile open state */
+  .sidebar--mobile-open {
+    transform: translateX(0) !important;
+    box-shadow: var(--shadow-2xl);
+  }
+
+  /* Main takes full width */
+  .main-wrap { grid-column: 1; min-width: 0; }
+
+  /* Show hamburger button */
+  .topbar-menu-btn { display: flex !important; }
+
+  /* Topbar: tighten up */
+  .topbar { padding: 0 var(--space-3); gap: var(--space-2); }
+  .topbar-search-btn { display: none; } /* replaced by icon only */
+
+  /* ── Page layout ────────────────────────────────────────────────────── */
+  .page { padding: var(--space-4) var(--space-3); }
+  .page-title { font-size: var(--text-2xl); }
+  .page-subtitle { font-size: var(--text-sm); }
+  .page-header { margin-bottom: var(--space-4); }
+  .page-header-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  /* Period selector: full width */
+  .period-selector { align-self: flex-start; }
+
+  /* ── Quota bar ──────────────────────────────────────────────────────── */
+  .quota-bar-wrap { padding: var(--space-3) var(--space-4); }
+  .quota-bar-meta { flex-wrap: wrap; gap: var(--space-2); }
+  .quota-label    { flex: 0 0 100%; }
+  .quota-values   { flex: 1; }
+
+  /* ── KPI Grid: 2 columns ────────────────────────────────────────────── */
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+  .kpi-card-value { font-size: var(--text-3xl); }
+  .kpi-card       { padding: var(--space-4); }
+
+  /* ── Charts: stacked ────────────────────────────────────────────────── */
+  .charts-grid { grid-template-columns: 1fr; gap: var(--space-3); margin-bottom: var(--space-3); }
+  .chart-card  { padding: var(--space-4); }
+  .chart-card-header { margin-bottom: var(--space-3); }
+  .chart-card-legend { flex-wrap: wrap; gap: var(--space-2); }
+  .chart-wrap        { height: 200px; }
+  .chart-wrap--donut { height: 160px; }
+
+  /* ── Bottom grid: stacked ───────────────────────────────────────────── */
+  .bottom-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  .bottom-grid > :last-child { grid-column: span 1; }
+
+  /* ── Forms ──────────────────────────────────────────────────────────── */
+  .form-row { grid-template-columns: 1fr; }
+
+  /* ── Modal ──────────────────────────────────────────────────────────── */
+  .modal-overlay { padding: var(--space-3) var(--space-3) 0; align-items: flex-end; }
+  .modal {
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    max-height: 92vh;
+    width: 100%;
+    max-width: 100%;
+  }
+  .modal-form { padding: var(--space-4); gap: var(--space-4); }
+  .modal-header { padding: var(--space-4) var(--space-5); }
+  .modal-footer { flex-direction: row; justify-content: flex-end; }
+
+  /* ── Toast ──────────────────────────────────────────────────────────── */
+  .toast-container {
+    left: var(--space-3);
+    right: var(--space-3);
+    bottom: var(--space-4);
+  }
+  .toast { min-width: auto; max-width: none; width: 100%; }
+
+  /* ── Notification panel ─────────────────────────────────────────────── */
+  .notif-panel {
+    left: var(--space-2);
+    right: var(--space-2);
+    width: auto;
+    max-height: 70vh;
+  }
+
+  /* ── Search overlay ─────────────────────────────────────────────────── */
+  .search-overlay { padding-top: 60px; padding-inline: var(--space-3); }
+  .search-panel   { max-width: 100%; border-radius: var(--radius-xl); }
+  .search-results { max-height: 280px; }
+
+  /* ── Card header: compact ───────────────────────────────────────────── */
+  .card-header { padding: var(--space-3) var(--space-4); }
+  .card-title  { font-size: var(--text-sm); }
+
+  /* Feed / tasks / leaderboard: tighter padding */
+  .feed-item, .task-item, .leaderboard-item {
+    padding: var(--space-2-5) var(--space-4);
+  }
+
+  /* Topbar: hide "Novo Lead" label on very small screens */
+  #topbar-new-lead-btn span { display: none; }
+  #topbar-new-lead-btn      { padding: var(--space-1-5) var(--space-2); }
+
+  /* Topbar right: tighten gap */
+  .topbar-right { gap: var(--space-1); }
+}
+
+/* ── 4. Mobile (≤ 640px) ────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+
+  /* ── Topbar ─────────────────────────────────────────────────────────── */
+  .topbar { padding: 0 var(--space-3); height: 52px; }
+  .topbar-badge { width: 14px; height: 14px; font-size: 8px; top: 3px; right: 3px; }
+
+  /* ── KPI grid: 2 cols but tighter ──────────────────────────────────── */
+  .kpi-grid { gap: var(--space-2); }
+  .kpi-card { padding: var(--space-3); }
+  .kpi-card-value { font-size: var(--text-2xl); letter-spacing: -0.02em; }
+  .kpi-card-header { margin-bottom: var(--space-2); }
+  .kpi-card-icon   { width: 28px; height: 28px; }
+  .kpi-card-footer { margin-top: var(--space-1); }
+  .kpi-card-sub    { font-size: 10px; }
+
+  /* ── Charts ─────────────────────────────────────────────────────────── */
+  .chart-card      { padding: var(--space-3); }
+  .chart-wrap      { height: 180px; }
+  .chart-wrap--donut { height: 150px; }
+  .chart-card-title { font-size: var(--text-md); }
+  .chart-card-sub   { font-size: 10px; }
+  .chart-card-legend { display: none; } /* show delta badge only */
+
+  /* Pipeline legend: 2 cols  */
+  .pipeline-legend { gap: var(--space-1-5); }
+  .pipeline-legend-item { gap: var(--space-1-5); }
+  .pipeline-legend-name  { font-size: 10px; }
+  .pipeline-legend-count { font-size: 10px; }
+  .pipeline-legend-pct   { font-size: 10px; }
+
+  /* ── Bottom grid ────────────────────────────────────────────────────── */
+  .bottom-grid { gap: var(--space-2); }
+
+  /* ── Feed & Task items ──────────────────────────────────────────────── */
+  .feed-item, .task-item { padding: var(--space-2) var(--space-3); }
+  .feed-item-title  { font-size: var(--text-xs); }
+  .task-item-title  { font-size: var(--text-xs); }
+  .task-priority-badge { font-size: 9px; padding: 1px 5px; }
+
+  /* ── Leaderboard ────────────────────────────────────────────────────── */
+  .leaderboard-item { padding: var(--space-2) var(--space-3); gap: var(--space-2); }
+  .leaderboard-avatar { width: 26px; height: 26px; font-size: 10px; }
+  .leaderboard-name   { font-size: var(--text-xs); }
+  .leaderboard-role   { font-size: 10px; }
+  .leaderboard-won    { font-size: var(--text-xs); }
+  .leaderboard-pct    { font-size: 10px; }
+
+  /* ── Page ───────────────────────────────────────────────────────────── */
+  .page        { padding: var(--space-3); }
+  .page-title  { font-size: var(--text-xl); }
+  .page-header { margin-bottom: var(--space-3); }
+
+  /* ── Quota bar ──────────────────────────────────────────────────────── */
+  .quota-bar-wrap { padding: var(--space-3); }
+  .quota-pct      { min-width: 32px; font-size: var(--text-xs); }
+
+  /* ── Period selector: compact ───────────────────────────────────────── */
+  .period-btn     { padding: var(--space-1) var(--space-2); font-size: 10px; }
+
+  /* Notif badge: bigger tap target */
+  .topbar-icon-btn { width: 32px; height: 32px; }
+
+  /* Sidebar overlay */
+  .sidebar-overlay.active { display: block; }
+
+  /* Topbar avatar: smaller */
+  .topbar-avatar { width: 28px; height: 28px; font-size: 10px; }
+}
+
+/* ── 5. Small mobile (≤ 480px) ──────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  /* KPI grid: single column */
+  .kpi-grid { grid-template-columns: 1fr; }
+  .kpi-card-value { font-size: var(--text-3xl); }
+
+  /* Page */
+  .page { padding: var(--space-3) var(--space-2-5); }
+
+  /* Card headers */
+  .card-header { padding: var(--space-2-5) var(--space-3); }
+
+  /* Chart */
+  .chart-card { padding: var(--space-3) var(--space-2-5); }
+  .chart-wrap { height: 160px; }
+
+  /* Modal: full screen bottom sheet */
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal {
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    max-height: 96vh;
+  }
+
+  /* Search */
+  .search-overlay { padding-top: 0; padding-inline: 0; align-items: flex-end; }
+  .search-panel {
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    max-height: 80vh;
+  }
+
+  /* Notif panel */
+  .notif-panel {
+    left: 0; right: 0;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    top: auto;
+    bottom: 0;
+    max-height: 70vh;
+  }
+
+  /* Toast: compact */
+  .toast { padding: var(--space-2-5) var(--space-3); }
+  .toast-title   { font-size: var(--text-xs); }
+  .toast-message { font-size: 10px; }
+
+  /* Bottom sheet drag handle visual hint */
+  .sidebar:before {
+    content: '';
+    display: block;
+    width: 36px; height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    margin: var(--space-2) auto 0;
+  }
+
+  /* Period selector: full width */
+  .period-selector { width: 100%; justify-content: space-evenly; }
+  .period-btn      { flex: 1; text-align: center; }
+}
+
+/* ── 6. Extra small (≤ 360px) ───────────────────────────────────────────── */
+@media (max-width: 360px) {
+
+  .topbar { padding: 0 var(--space-2); }
+  .topbar-right { gap: 2px; }
+  .topbar-icon-btn { width: 30px; height: 30px; }
+
+  .page { padding: var(--space-2); }
+
+  .kpi-card-value { font-size: var(--text-2xl); }
+  .kpi-card       { padding: var(--space-3) var(--space-2-5); }
+
+  .chart-wrap { height: 140px; }
+
+  .feed-item  { padding: var(--space-1-5) var(--space-2-5); }
+  .task-item  { padding: var(--space-1-5) var(--space-2-5); }
+
+  .bottom-grid { gap: var(--space-2); }
+
+  /* Breadcrumb: hide IBEX root */
+  .breadcrumb-root, .breadcrumb-sep { display: none; }
+}
+
+/* ── Utility: hide on mobile ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+@media (min-width: 769px) {
+  .hide-desktop { display: none !important; }
+}
+
+/* ── Safe area insets (notch phones) ────────────────────────────────────── */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  @media (max-width: 768px) {
+    .toast-container { bottom: calc(var(--space-4) + env(safe-area-inset-bottom)); }
+    .modal           { padding-bottom: env(safe-area-inset-bottom); }
+    .sidebar         { padding-bottom: env(safe-area-inset-bottom); }
+  }
+}

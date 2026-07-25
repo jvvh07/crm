@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#09090b" />
+  <meta name="description" content="IBEX CRM — Gestão de Equipe. Departamentos, colaboradores, cargos e indicadores." />
+  <meta name="robots" content="noindex" />
+  <title>IBEX CRM — Equipe</title>
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <script src="js/theme-engine.js"></script>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/premium.css" />
+  <link rel="stylesheet" href="css/leads.css" />
+  <link rel="stylesheet" href="css/team.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><path d='M8 22 L14 10 L20 18 L24 13' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+</head>
+<body class="ibex-body" id="ibex-root">
+
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <div class="app-shell" id="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Navegação principal">
+      <div class="sidebar-header">
+        <a class="sidebar-logo" href="index.html" aria-label="IBEX CRM — Início">
+          <div class="sidebar-logo-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+              <path d="M6 24L12 10L19 20L24 13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="sidebar-logo-text">IBEX<span class="sidebar-logo-suffix">CRM</span></span>
+        </a>
+        <button class="sidebar-collapse-btn" id="sidebar-collapse-btn" aria-label="Recolher sidebar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav" role="menubar">
+
+        <div class="sidebar-nav-section">
+          <span class="sidebar-nav-label">Principal</span>
+
+          <a class="sidebar-nav-item" href="index.html" data-page="dashboard" role="menuitem" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+            </span>
+            <span class="nav-label">Dashboard</span>
+            <span class="nav-shortcut" aria-label="Atalho 1">1</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="pipeline.html" data-page="pipeline" role="menuitem" id="nav-pipeline">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 20V10M12 20V4M6 20v-6"/>
+              </svg>
+            </span>
+            <span class="nav-label">Pipeline</span>
+            <span class="nav-shortcut" aria-label="Atalho 2">2</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="leads.html" data-page="leads" role="menuitem" id="nav-leads">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
+            <span class="nav-label">Leads</span>
+            <span class="nav-shortcut" aria-label="Atalho 3">3</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="analytics.html" data-page="analytics" role="menuitem" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </span>
+            <span class="nav-label">Analytics</span>
+            <span class="nav-shortcut" aria-label="Atalho 4">4</span>
+          </a>
+        </div>
+
+        <div class="sidebar-nav-section">
+          <span class="sidebar-nav-label">Operações</span>
+
+          <a class="sidebar-nav-item" href="tasks.html" data-page="tasks" role="menuitem" id="nav-tasks">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              </svg>
+            </span>
+            <span class="nav-label">Tarefas</span>
+            <span class="nav-badge" id="tasks-badge" aria-label="Tarefas pendentes">0</span>
+            <span class="nav-shortcut" aria-label="Atalho 5">5</span>
+          </a>
+
+          <a class="sidebar-nav-item active" href="team.html" data-page="team" role="menuitem" id="nav-team">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
+            <span class="nav-label">Equipe</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="roles.html" data-page="roles" role="menuitem" id="nav-roles">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </span>
+            <span class="nav-label">Papéis</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="integrations.html" data-page="integrations" role="menuitem" id="nav-integrations">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+              </svg>
+            </span>
+            <span class="nav-label">Integrações</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="inbox.html" data-page="inbox" role="menuitem" id="nav-inbox">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </span>
+            <span class="nav-label">Caixa de Entrada</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="proposals.html" data-page="proposals" role="menuitem" id="nav-proposals">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </span>
+            <span class="nav-label">Propostas</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="automations.html" data-page="automations" role="menuitem" id="nav-automations">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </span>
+            <span class="nav-label">Automações</span>
+            <span class="nav-chip-new">Novo</span>
+          </a>
+        </div>
+
+        <div class="sidebar-nav-section">
+          <span class="sidebar-nav-label">Sistema</span>
+
+          <a class="sidebar-nav-item" href="settings.html" data-page="settings" role="menuitem" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </span>
+            <span class="nav-label">Configurações</span>
+            <span class="nav-shortcut" aria-label="Atalho 6">6</span>
+          </a>
+        </div>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-user" id="sidebar-user-btn" aria-label="Menu do usuário">
+          <div class="sidebar-user-avatar" id="sidebar-avatar">JH</div>
+          <div class="sidebar-user-info">
+            <span class="sidebar-user-name" id="sidebar-user-name">Juan Heuer</span>
+            <span class="sidebar-user-role" id="sidebar-user-role">Executivo de Contas Sr.</span>
+          </div>
+          <svg class="sidebar-user-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main-wrap" id="main-wrap">
+
+      <header class="topbar" id="topbar" role="banner">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" id="topbar-menu-btn" aria-label="Abrir menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="topbar-breadcrumb">
+            <span class="breadcrumb-item breadcrumb-root">IBEX</span>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-item breadcrumb-current">Equipe</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button class="topbar-search-btn" id="topbar-search-btn" aria-label="Buscar (Ctrl+K)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span class="topbar-search-label">Buscar…</span>
+            <kbd class="topbar-kbd">⌘K</kbd>
+          </button>
+          <button class="btn btn-primary btn-sm" id="team-add-member-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Adicionar Colaborador
+          </button>
+          <button class="topbar-icon-btn" id="notifications-btn" aria-label="Notificações">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="topbar-badge" id="notif-badge">3</span>
+          </button>
+          <button class="topbar-avatar-btn" id="topbar-avatar-btn" aria-label="Perfil">
+            <div class="topbar-avatar" id="topbar-avatar">JH</div>
+          </button>
+        </div>
+      </header>
+
+      <!-- TEAM PAGE -->
+      <main class="team-page" id="team-page" role="main">
+
+        <div class="team-header">
+          <div>
+            <h1 class="page-title">Equipe</h1>
+            <p class="team-header-sub">Departamentos, colaboradores, cargos e indicadores de desempenho.</p>
+          </div>
+          <div class="team-header-stats" id="team-header-stats">
+            <!-- injetado via JS: total de colaboradores, ativos, departamentos -->
+          </div>
+        </div>
+
+        <!-- GRID DE DEPARTAMENTOS -->
+        <div class="team-dept-grid" id="team-dept-grid" role="tablist" aria-label="Filtrar por departamento">
+          <!-- injetado via JS -->
+        </div>
+
+        <!-- BARRA DE BUSCA -->
+        <div class="team-search-bar">
+          <div class="team-search-wrap">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" class="team-search-input" id="team-search-input" placeholder="Buscar colaborador…" aria-label="Buscar colaborador" />
+          </div>
+          <div class="view-toggle" id="team-view-toggle" role="group" aria-label="Alternar visualização">
+            <button class="view-toggle-btn active" data-view="grid" aria-label="Visualização em grade">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+            </button>
+            <button class="view-toggle-btn" data-view="list" aria-label="Visualização em lista">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- GRID/LISTA DE COLABORADORES -->
+        <div class="team-members-container" id="team-members-container">
+          <!-- injetado via JS -->
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- DRAWER: Perfil do Colaborador -->
+  <div class="drawer-overlay" id="team-drawer-overlay" hidden></div>
+  <aside class="lead-drawer team-drawer" id="team-drawer" role="dialog" aria-modal="true" aria-label="Perfil do colaborador" hidden>
+
+      <div class="drawer-header">
+        <div class="drawer-avatar" id="team-drawer-avatar">JH</div>
+        <div style="flex:1;min-width:0">
+          <div class="drawer-lead-name" id="team-drawer-name">—</div>
+          <div class="drawer-lead-role" id="team-drawer-role">—</div>
+        </div>
+        <button class="drawer-close-btn" data-close-drawer aria-label="Fechar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="drawer-tabs" role="tablist">
+        <button class="drawer-tab active" data-tab="profile" role="tab">Perfil</button>
+        <button class="drawer-tab" data-tab="permissions" role="tab">Permissões</button>
+        <button class="drawer-tab" data-tab="kpis" role="tab">Indicadores</button>
+      </div>
+
+      <div class="drawer-body" id="team-drawer-body">
+        <!-- injetado via JS conforme aba ativa -->
+      </div>
+
+    </aside>
+
+  <!-- MODAL: Novo Colaborador -->
+  <div class="modal-overlay" id="team-modal-new-member" role="dialog" aria-label="Adicionar colaborador" aria-modal="true" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal" id="team-modal-panel" style="max-width:480px">
+      <div class="modal-header">
+        <h2 class="modal-title">Adicionar Colaborador</h2>
+        <button class="modal-close-btn" data-close-modal aria-label="Fechar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form class="modal-form" id="team-new-member-form" novalidate autocomplete="off">
+        <div class="form-section">
+          <div class="form-row">
+            <div class="form-group"><label class="form-label" for="tm-name">Nome completo <span class="required">*</span></label><input type="text" class="form-input" id="tm-name" name="name" required /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label" for="tm-role">Cargo <span class="required">*</span></label><input type="text" class="form-input" id="tm-role" name="role" required /></div>
+            <div class="form-group">
+              <label class="form-label" for="tm-department">Departamento <span class="required">*</span></label>
+              <select class="form-select" id="tm-department" name="department" required></select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label" for="tm-email">E-mail <span class="required">*</span></label><input type="email" class="form-input" id="tm-email" name="email" required /></div>
+            <div class="form-group"><label class="form-label" for="tm-phone">Telefone</label><input type="text" class="form-input" id="tm-phone" name="phone" placeholder="+55…" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label" for="tm-quota">Meta mensal (R$)</label><input type="number" class="form-input" id="tm-quota" name="quota" min="0" step="1000" placeholder="0" /></div>
+            <div class="form-group"><label class="form-label" for="tm-admission">Data de admissão</label><input type="date" class="form-input" id="tm-admission" name="admissionDate" /></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close-modal>Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="team-save-member-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Adicionar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container" role="region" aria-live="polite"></div>
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- Search overlay (Ctrl+K) -->
+  <div class="search-overlay" id="search-overlay" hidden>
+    <div class="search-backdrop" id="search-backdrop"></div>
+    <div class="search-panel">
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="search-input" id="search-input" placeholder="Buscar leads, tarefas, páginas…" autocomplete="off" />
+      </div>
+      <div class="search-results" id="search-results"></div>
+      <div class="search-footer"></div>
+    </div>
+  </div>
+
+  <!-- 1. Utilitários -->
+  <script src="js/utils.js"></script>
+  <!-- 2. Camada de dados -->
+  <script src="js/storage.js"></script>
+  <!-- 3. Estado global -->
+  <script src="js/state.js"></script>
+  <script src="js/theme-engine-patch.js"></script>
+  <!-- 4. Componentes de UI genéricos -->
+  <script src="js/ui.js"></script>
+  <!-- 5. App orchestrator -->
+  <script src="js/app.js"></script>
+  <!-- Componentes compartilhados (confirm dialog, avatar) -->
+  <script src="js/components.js"></script>
+  <!-- 6. Premium enhancements globais (context menu, confirm, atalhos) -->
+  <script src="js/dashboard-premium.js"></script>
+  <!-- Papéis e Permissões (fonte compartilhada) -->
+  <script src="js/permissions-data.js"></script>
+  <!-- Módulo de Equipe (esta página) -->
+  <script src="js/team.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IBEX CRM — Configurações" />
+  <title>IBEX CRM — Configurações</title>
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <script src="js/theme-engine.js"></script>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/settings.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><path d='M8 22 L14 10 L20 18 L24 13' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+</head>
+<body class="ibex-body" id="ibex-root">
+<div class="grain-overlay" aria-hidden="true"></div>
+<div class="app-shell" id="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar" role="navigation">
+    <div class="sidebar-header">
+      <a class="sidebar-logo" href="index.html">
+        <div class="sidebar-logo-icon"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M6 24L12 10L19 20L24 13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="sidebar-logo-text">IBEX<span class="sidebar-logo-suffix">CRM</span></span>
+      </a>
+      <button class="sidebar-collapse-btn" id="sidebar-collapse-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+    </div>
+    <nav class="sidebar-nav" role="menubar">
+
+        <div class="sidebar-nav-section">
+          <span class="sidebar-nav-label">Principal</span>
+
+          <a class="sidebar-nav-item" href="index.html" data-page="dashboard" role="menuitem" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+            </span>
+            <span class="nav-label">Dashboard</span>
+            <span class="nav-shortcut" aria-label="Atalho 1">1</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="pipeline.html" data-page="pipeline" role="menuitem" id="nav-pipeline">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 20V10M12 20V4M6 20v-6"/>
+              </svg>
+            </span>
+            <span class="nav-label">Pipeline</span>
+            <span class="nav-shortcut" aria-label="Atalho 2">2</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="leads.html" data-page="leads" role="menuitem" id="nav-leads">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
+            <span class="nav-label">Leads</span>
+            <span class="nav-shortcut" aria-label="Atalho 3">3</span>
+          </a> 
+
+          <a class="sidebar-nav-item" href="analytics.html" data-page="analytics" role="menuitem" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </span>
+            <span class="nav-label">Analytics</span>
+            <span class="nav-shortcut" aria-label="Atalho 4">4</span>
+          </a>
+        </div>
+
+        <div class="sidebar-nav-section">
+          <span class="sidebar-nav-label">Operações</span>
+
+          <a class="sidebar-nav-item" href="tasks.html" data-page="tasks" role="menuitem" id="nav-tasks">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              </svg>
+            </span>
+            <span class="nav-label">Tarefas</span>
+            <span class="nav-badge" id="tasks-badge" aria-label="Tarefas pendentes">0</span>
+            <span class="nav-shortcut" aria-label="Atalho 5">5</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="team.html" data-page="team" role="menuitem" id="nav-team">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
+            <span class="nav-label">Equipe</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="roles.html" data-page="roles" role="menuitem" id="nav-roles">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </span>
+            <span class="nav-label">Papéis</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="integrations.html" data-page="integrations" role="menuitem" id="nav-integrations">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+              </svg>
+            </span>
+            <span class="nav-label">Integrações</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="inbox.html" data-page="inbox" role="menuitem" id="nav-inbox">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </span>
+            <span class="nav-label">Caixa de Entrada</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="proposals.html" data-page="proposals" role="menuitem" id="nav-proposals">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </span>
+            <span class="nav-label">Propostas</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="automations.html" data-page="automations" role="menuitem" id="nav-automations">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </span>
+            <span class="nav-label">Automações</span>
+            <span class="nav-chip-new">Novo</span>
+          </a>
+        </div>
+
+        <div class="sidebar-nav-section">
+          <span class="sidebar-nav-label">Sistema</span>
+
+          <a class="sidebar-nav-item active" href="settings.html" data-page="settings" role="menuitem" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </span>
+            <span class="nav-label">Configurações</span>
+            <span class="nav-shortcut" aria-label="Atalho 6">6</span>
+          </a>
+        </div>
+
+      </nav>
+    <div class="sidebar-footer">
+      <button class="sidebar-user" id="sidebar-user-btn">
+        <div class="sidebar-user-avatar" id="sidebar-avatar">JH</div>
+        <div class="sidebar-user-info"><span class="sidebar-user-name" id="sidebar-user-name">Juan Heuer</span><span class="sidebar-user-role" id="sidebar-user-role">Executivo de Contas Sr.</span></div>
+        <svg class="sidebar-user-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-wrap" id="main-wrap">
+    <header class="topbar" id="topbar">
+      <div class="topbar-left">
+        <button class="topbar-menu-btn" id="topbar-menu-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <div class="topbar-breadcrumb"><span class="breadcrumb-item breadcrumb-root">IBEX</span><span class="breadcrumb-sep">/</span><span class="breadcrumb-item breadcrumb-current">Configurações</span></div>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-icon-btn" id="notifications-btn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><span class="topbar-badge" id="notif-badge">3</span></button>
+        <button class="topbar-avatar-btn"><div class="topbar-avatar" id="topbar-avatar">JH</div></button>
+      </div>
+    </header>
+
+    <main class="settings-page" id="settings-page">
+      <div class="settings-layout">
+
+        <!-- Settings nav -->
+        <nav class="settings-nav" id="settings-nav">
+          <div class="settings-nav-group">
+            <div class="settings-nav-group-label">Conta</div>
+            <button class="settings-nav-item active" data-tab="profile">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Perfil
+            </button>
+            <button class="settings-nav-item" data-tab="security">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Segurança
+            </button>
+          </div>
+          <div class="settings-nav-group">
+            <div class="settings-nav-group-label">Workspace</div>
+            <button class="settings-nav-item" data-tab="workspace">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Geral
+            </button>
+            <button class="settings-nav-item" data-tab="team">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Equipe
+            </button>
+            <button class="settings-nav-item" data-tab="pipeline">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>Pipeline
+            </button>
+            <button class="settings-nav-item" data-tab="integrations">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Integrações
+            </button>
+          </div>
+          <div class="settings-nav-group">
+            <div class="settings-nav-group-label">Preferências</div>
+            <button class="settings-nav-item" data-tab="notifications">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Notificações
+            </button>
+            <button class="settings-nav-item" data-tab="appearance">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M20.39 20.39A9 9 0 1 1 3.61 3.61"/></svg>Aparência
+            </button>
+            <button class="settings-nav-item" data-tab="shortcuts">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M16 2l-4 5-4-5"/></svg>Atalhos
+            </button>
+          </div>
+          <div class="settings-nav-group">
+            <div class="settings-nav-group-label">Dados</div>
+            <button class="settings-nav-item" data-tab="data">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>Dados &amp; Export
+            </button>
+            <button class="settings-nav-item danger" data-tab="danger">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Zona de Perigo
+            </button>
+          </div>
+        </nav>
+
+        <!-- CONTENT -->
+        <div class="settings-content" id="settings-content">
+
+          <!-- ═══ PROFILE ═══════════════════════════════════════════════════ -->
+          <section class="settings-panel active" id="panel-profile">
+            <h2 class="settings-section-title">Perfil do Usuário</h2>
+            <p class="settings-section-sub">Suas informações pessoais e como você aparece para a equipe.</p>
+
+            <div class="settings-card">
+              <div class="user-hero">
+                <div class="user-hero-avatar" id="user-hero-avatar" title="Clique para alterar">JH</div>
+                <div class="user-hero-info">
+                  <h3 class="user-hero-name" id="user-hero-name">Juan Heuer</h3>
+                  <p class="user-hero-role" id="user-hero-role">Executivo de Contas Sr. · IBEX Vendas</p>
+                  <div class="user-hero-badges">
+                    <span class="user-badge" style="background:rgba(99,102,241,0.15);color:#818cf8">Admin</span>
+                    <span class="user-badge" style="background:rgba(16,185,129,0.15);color:#34d399" id="hero-plan-badge">Plano Pro</span>
+                    <span class="user-badge" style="background:rgba(245,158,11,0.15);color:#fbbf24" id="hero-streak-badge">🔥 Ativo hoje</span>
+                  </div>
+                </div>
+              </div>
+              <form class="settings-form" id="form-profile" novalidate>
+                <div class="form-group"><label class="form-label" for="sf-first-name">Nome <span class="required">*</span></label><input type="text" class="form-input" id="sf-first-name" value="Juan" /></div>
+                <div class="form-group"><label class="form-label" for="sf-last-name">Sobrenome <span class="required">*</span></label><input type="text" class="form-input" id="sf-last-name" value="Monteiro" /></div>
+                <div class="form-group"><label class="form-label" for="sf-email">E-mail</label><input type="email" class="form-input" id="sf-email" value="Juan.monteiro@ibexcrm.com.br" /></div>
+                <div class="form-group"><label class="form-label" for="sf-phone">Telefone</label><input type="tel" class="form-input" id="sf-phone" placeholder="(11) 99000-0000" /></div>
+                <div class="form-group"><label class="form-label" for="sf-role">Cargo</label><input type="text" class="form-input" id="sf-role" value="Executivo de Contas Sr." /></div>
+                <div class="form-group"><label class="form-label" for="sf-department">Departamento</label><input type="text" class="form-input" id="sf-department" value="Comercial" /></div>
+                <div class="form-group form-group--full"><label class="form-label" for="sf-bio">Bio</label><textarea class="form-textarea" id="sf-bio" rows="2" placeholder="Conte um pouco sobre você para a equipe…"></textarea></div>
+                <div class="form-group form-group--full"><label class="form-label" for="sf-linkedin">LinkedIn</label><input type="url" class="form-input" id="sf-linkedin" placeholder="https://linkedin.com/in/seu-perfil" /></div>
+              </form>
+              <div class="settings-card-footer">
+                <button class="btn btn-secondary btn-sm" id="cancel-profile-btn" type="button">Cancelar</button>
+                <button class="btn btn-primary btn-sm" id="save-profile-btn" type="button">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Salvar perfil
+                </button>
+              </div>
+            </div>
+
+            <!-- Stats quick view -->
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Suas métricas do mês</span></div>
+              <div class="settings-form" style="padding:var(--space-4) var(--space-5)">
+                <div class="storage-key-item"><div class="storage-key-name">Leads atribuídos</div><div class="storage-key-count" id="my-leads-count">—</div></div>
+                <div class="storage-key-item"><div class="storage-key-name">Valor no funil</div><div class="storage-key-count" id="my-pipeline-value">—</div></div>
+                <div class="storage-key-item"><div class="storage-key-name">Ganhos</div><div class="storage-key-count" id="my-won-count">—</div></div>
+                <div class="storage-key-item"><div class="storage-key-name">Tarefas abertas</div><div class="storage-key-count" id="my-tasks-count">—</div></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══ SECURITY ══════════════════════════════════════════════════ -->
+          <section class="settings-panel" id="panel-security">
+            <h2 class="settings-section-title">Segurança</h2>
+            <p class="settings-section-sub">Gerencie sua senha e as sessões ativas.</p>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Alterar senha</span></div>
+              <div class="settings-form">
+                <div class="form-group form-group--full"><label class="form-label" for="sec-current-pw">Senha atual</label><input type="password" class="form-input" id="sec-current-pw" placeholder="••••••••" /></div>
+                <div class="form-group"><label class="form-label" for="sec-new-pw">Nova senha</label><input type="password" class="form-input" id="sec-new-pw" placeholder="Mínimo 8 caracteres" /></div>
+                <div class="form-group"><label class="form-label" for="sec-confirm-pw">confirmar</label><input type="password" class="form-input" id="sec-confirm-pw" placeholder="Repita a nova senha" /></div>
+              </div>
+              <div class="settings-card-footer">
+                <button class="btn btn-primary btn-sm" id="save-password-btn">Atualizar senha</button>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Autenticação de dois fatores</span></div>
+              <div class="settings-toggle-row">
+                <div class="settings-toggle-row-left">
+                  <span class="settings-toggle-label">Habilitar 2FA via aplicativo</span>
+                  <span class="settings-toggle-sub">Use Google Authenticator ou Authy para proteger sua conta</span>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" id="toggle-2fa" /><span class="toggle-slider"></span></label>
+              </div>
+              <div class="settings-toggle-row">
+                <div class="settings-toggle-row-left">
+                  <span class="settings-toggle-label">Alertas de login por e-mail</span>
+                  <span class="settings-toggle-sub">Receba um e-mail toda vez que sua conta for acessada</span>
+                </div>
+                <label class="toggle-switch"><input type="checkbox" id="toggle-login-alert" checked /><span class="toggle-slider"></span></label>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Sessões ativas</span></div>
+              <div class="info-row">
+                <div><div class="info-row-label">💻 Chrome — Windows 11</div><div class="info-row-sub">São Paulo, SP · Agora (você)</div></div>
+                <div class="info-row-value" style="color:#34d399">Atual</div>
+              </div>
+              <div class="info-row">
+                <div><div class="info-row-label">📱 Safari — iPhone 15</div><div class="info-row-sub">São Paulo, SP · Há 2 horas</div></div>
+                <div class="info-row-value"><button class="btn btn-danger btn-sm" onclick="window._settingsCtrl?.revokeSessionStub()">Revogar</button></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══ WORKSPACE ══════════════════════════════════════════════════ -->
+          <section class="settings-panel" id="panel-workspace">
+            <h2 class="settings-section-title">Workspace Geral</h2>
+            <p class="settings-section-sub">Configurações globais do seu CRM — afetam toda a equipe.</p>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Empresa</span></div>
+              <div class="settings-form">
+                <div class="form-group form-group--full"><label class="form-label" for="ws-company">Nome da empresa</label><input type="text" class="form-input" id="ws-company" value="IBEX Vendas Ltda." /></div>
+                <div class="form-group"><label class="form-label" for="ws-website">Site</label><input type="url" class="form-input" id="ws-website" placeholder="https://suaempresa.com.br" /></div>
+                <div class="form-group"><label class="form-label" for="ws-segment">Segmento</label><input type="text" class="form-input" id="ws-segment" placeholder="SaaS B2B…" /></div>
+                <div class="form-group"><label class="form-label" for="ws-size">Tamanho da equipe</label>
+                  <select class="form-select" id="ws-size">
+                    <option value="1-5">1–5 pessoas</option>
+                    <option value="6-15" selected>6–15 pessoas</option>
+                    <option value="16-50">16–50 pessoas</option>
+                    <option value="51+">51+ pessoas</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Localização &amp; formato</span></div>
+              <div class="settings-form">
+                <div class="form-group"><label class="form-label" for="ws-currency">Moeda</label>
+                  <select class="form-select" id="ws-currency"><option value="BRL" selected>Real (R$)</option><option value="USD">Dólar (US$)</option><option value="EUR">Euro (€)</option></select>
+                </div>
+                <div class="form-group"><label class="form-label" for="ws-timezone">Fuso horário</label>
+                  <select class="form-select" id="ws-timezone"><option selected>America/Sao_Paulo (BRT)</option><option>America/Manaus</option><option>America/Fortaleza</option></select>
+                </div>
+                <div class="form-group"><label class="form-label" for="ws-date-fmt">formato de data</label>
+                  <select class="form-select" id="ws-date-fmt"><option selected>DD/MM/AAAA</option><option>MM/DD/AAAA</option><option>AAAA-MM-DD</option></select>
+                </div>
+                <div class="form-group"><label class="form-label" for="ws-fiscal">Início do ano fiscal</label>
+                  <select class="form-select" id="ws-fiscal"><option value="1" selected>Janeiro</option><option value="4">Abril</option><option value="7">Julho</option></select>
+                </div>
+              </div>
+              <div class="settings-card-footer">
+                <button class="btn btn-primary btn-sm" id="save-workspace-btn">Salvar configurações</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══ TEAM ═══════════════════════════════════════════════════════ -->
+          <section class="settings-panel" id="panel-team">
+            <h2 class="settings-section-title">Equipe</h2>
+            <p class="settings-section-sub">Gerencie membros, funções e permissões do seu time de vendas.</p>
+
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <span class="settings-card-title">Membros <span id="team-count" style="color:var(--text-muted);font-weight:500"></span></span>
+                <button class="btn btn-primary btn-sm" id="invite-btn">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                  Convidar membro
+                </button>
+              </div>
+              <div id="team-list"><!-- injected --></div>
+            </div>
+          </section>
+
+          <!-- ═══ PIPELINE ════════════════════════════════════════════════════ -->
+          <section class="settings-panel" id="panel-pipeline">
+            <h2 class="settings-section-title">Configurar Pipeline</h2>
+            <p class="settings-section-sub">Personalize os estágios do funil de vendas e as probabilidades de conversão.</p>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Estágios do funil</span></div>
+              <div id="pipeline-stages-list"><!-- injected --></div>
+              <div class="settings-card-footer">
+                <button class="btn btn-secondary btn-sm" id="add-stage-btn">+ Adicionar estágio</button>
+                <button class="btn btn-primary btn-sm" id="save-stages-btn">Salvar estágios</button>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Metas do pipeline</span></div>
+              <div class="settings-form">
+                <div class="form-group"><label class="form-label" for="goal-monthly">Meta mensal (R$)</label><input type="number" class="form-input" id="goal-monthly" placeholder="100000" /></div>
+                <div class="form-group"><label class="form-label" for="goal-deals">Meta de deals</label><input type="number" class="form-input" id="goal-deals" placeholder="10" /></div>
+              </div>
+              <div class="settings-card-footer">
+                <button class="btn btn-primary btn-sm" id="save-goals-btn">Salvar metas</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══ INTEGRATIONS ════════════════════════════════════════════════ -->
+          <section class="settings-panel" id="panel-integrations">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+              <div>
+                <h2 class="settings-section-title">Integrações</h2>
+                <p class="settings-section-sub">Conecte o IBEX às suas ferramentas favoritas.</p>
+              </div>
+              <a href="integrations.html" class="btn btn-primary btn-sm" style="flex-shrink:0;text-decoration:none">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                Ver Central de Integrações
+              </a>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Disponíveis</span></div>
+              <div class="integration-list">
+                <div class="integration-item">
+                  <div class="integration-icon">📧</div>
+                  <div class="integration-info"><div class="integration-name">Gmail / Google Workspace</div><div class="integration-desc">Sincronize e-mails e crie leads automaticamente</div></div>
+                  <span class="integration-status connected">Conectado</span>
+                </div>
+                <div class="integration-item">
+                  <div class="integration-icon">📅</div>
+                  <div class="integration-info"><div class="integration-name">Google Calendar</div><div class="integration-desc">Agende reuniões e sincronize tarefas</div></div>
+                  <span class="integration-status connected">Conectado</span>
+                </div>
+                <div class="integration-item">
+                  <div class="integration-icon">💬</div>
+                  <div class="integration-info"><div class="integration-name">Slack</div><div class="integration-desc">Receba notificações de novos leads no seu canal</div></div>
+                  <a href="automations.html" class="integration-status available" style="text-decoration:none">Configurar</a>
+                </div>
+                <div class="integration-item">
+                  <div class="integration-icon">📊</div>
+                  <div class="integration-info"><div class="integration-name">Google Sheets</div><div class="integration-desc">Exporte leads automaticamente para planilhas</div></div>
+                  <a href="automations.html" class="integration-status available" style="text-decoration:none">Configurar</a>
+                </div>
+                <div class="integration-item">
+                  <div class="integration-icon">🔗</div>
+                  <div class="integration-info"><div class="integration-name">Zapier / Make</div><div class="integration-desc">Automatize fluxos com centenas de apps via webhook</div></div>
+                  <a href="automations.html" class="integration-status available" style="text-decoration:none">Configurar</a>
+                </div>
+                <div class="integration-item">
+                  <div class="integration-icon">📞</div>
+                  <div class="integration-info"><div class="integration-name">WhatsApp Oficial API</div><div class="integration-desc">Envie mensagens direto pelo CRM (requer chave)</div></div>
+                  <a href="automations.html" class="integration-status available" style="text-decoration:none">Configurar</a>
+                </div>
+                <div class="integration-item">
+                  <div class="integration-icon">🎯</div>
+                  <div class="integration-info"><div class="integration-name">RD Station Marketing</div><div class="integration-desc">Sincronize contatos e eventos de conversão</div></div>
+                  <a href="automations.html" class="integration-status available" style="text-decoration:none">Configurar</a>
+                </div>
+                <div class="integration-item">
+                  <div class="integration-icon">🤖</div>
+                  <div class="integration-info"><div class="integration-name">OpenAI (ChatGPT)</div><div class="integration-desc">Gere rascunhos de e-mails e resumos de leads automáticos</div></div>
+                  <a href="automations.html" class="integration-status available" style="text-decoration:none">Configurar</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Credenciais de API</span></div>
+              <div class="settings-form" style="padding: 16px;">
+                <p class="settings-section-sub" style="margin-bottom: 16px;">Insira as chaves de acesso para ativar as integrações acima.</p>
+                
+                <div class="form-group">
+                  <label class="form-label" for="api-whatsapp">WhatsApp Cloud API Token</label>
+                  <input type="password" class="form-input" id="api-whatsapp" placeholder="EAAG... ou sk_..." />
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label" for="api-rdstation">RD Station Client Secret</label>
+                  <input type="password" class="form-input" id="api-rdstation" placeholder="Sua chave do RD Station" />
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label" for="api-openai">OpenAI API Key</label>
+                  <input type="password" class="form-input" id="api-openai" placeholder="sk-..." />
+                </div>
+              </div>
+              <div class="settings-card-footer">
+                <button class="btn btn-primary btn-sm" id="save-api-keys-btn">Salvar Credenciais</button>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">API &amp; Webhooks</span></div>
+              <div class="info-row">
+                <div class="info-row-label">Chave de API</div>
+                <div style="display:flex;align-items:center;gap:var(--space-2)">
+                  <code style="font-size:var(--text-xs);color:var(--text-muted);background:var(--surface-2);padding:4px 10px;border-radius:var(--radius-md)">ibex_sk_••••••••••••••••••••</code>
+                  <button class="btn btn-secondary btn-sm" id="copy-api-key-btn">Copiar</button>
+                </div>
+              </div>
+              <div class="info-row">
+                <div class="info-row-label">Webhook URL</div>
+                <div style="display:flex;align-items:center;gap:var(--space-2)">
+                  <code style="font-size:var(--text-xs);color:var(--text-muted);background:var(--surface-2);padding:4px 10px;border-radius:var(--radius-md)">https://api.ibexcrm.app/hooks/...</code>
+                  <button class="btn btn-secondary btn-sm" id="copy-webhook-btn">Copiar</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══ NOTIFICATIONS ════════════════════════════════════════════════ -->
+          <section class="settings-panel" id="panel-notifications">
+            <h2 class="settings-section-title">Notificações</h2>
+            <p class="settings-section-sub">Controle quando e como você recebe alertas do sistema.</p>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Atividade de leads</span></div>
+              <div class="settings-toggle-row"><div class="settings-toggle-row-left"><span class="settings-toggle-label">Lead atribuído a mim</span><span class="settings-toggle-sub">Alerta quando um lead é adicionado à sua carteira</span></div><label class="toggle-switch"><input type="checkbox" id="nt-assigned" checked /><span class="toggle-slider"></span></label></div>
+              <div class="settings-toggle-row"><div class="settings-toggle-row-left"><span class="settings-toggle-label">Lead inativo (+15 dias)</span><span class="settings-toggle-sub">Aviso quando nenhuma interação foi registrada</span></div><label class="toggle-switch"><input type="checkbox" id="nt-inactive" checked /><span class="toggle-slider"></span></label></div>
+              <div class="settings-toggle-row"><div class="settings-toggle-row-left"><span class="settings-toggle-label">Mudança de estágio</span><span class="settings-toggle-sub">Quando um lead que você acompanha muda de estágio</span></div><label class="toggle-switch"><input type="checkbox" id="nt-stage-change" /><span class="toggle-slider"></span></label></div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Tarefas &amp; Prazos</span></div>
+              <div class="settings-toggle-row"><div class="settings-toggle-row-left"><span class="settings-toggle-label">Tarefa vencendo hoje</span><span class="settings-toggle-sub">Lembrete diário de tarefas com prazo</span></div><label class="toggle-switch"><input type="checkbox" id="nt-task-due" checked /><span class="toggle-slider"></span></label></div>
+              <div class="settings-toggle-row"><div class="settings-toggle-row-left"><span class="settings-toggle-label">Tarefa atrasada</span><span class="settings-toggle-sub">Alerta quando uma tarefa passou do prazo</span></div><label class="toggle-switch"><input type="checkbox" id="nt-task-overdue" checked /><span class="toggle-slider"></span></label></div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Equipe &amp; Resultados</span></div>
+              <div class="settings-toggle-row"><div class="settings-toggle-row-left"><span class="settings-toggle-label">Negócio fechado pela equipe 🏆</span><span class="settings-toggle-sub">Comemorações! Novos ganhos de qualquer membro</span></div><label class="toggle-switch"><input type="checkbox" id="nt-won" checked /><span class="toggle-slider"></span></label></div>
+              <div class="settings-toggle-row"><div class="settings-toggle-row-left"><span class="settings-toggle-label">Relatório semanal por e-mail</span><span class="settings-toggle-sub">Resumo de performance toda segunda-feira às 8h</span></div><label class="toggle-switch"><input type="checkbox" id="nt-weekly" /><span class="toggle-slider"></span></label></div>
+              <div class="settings-toggle-row"><div class="settings-toggle-row-left"><span class="settings-toggle-label">Notificações push no navegador</span><span class="settings-toggle-sub">Alertas mesmo quando o CRM está em segundo plano</span></div><label class="toggle-switch"><input type="checkbox" id="nt-push" /><span class="toggle-slider"></span></label></div>
+            </div>
+
+            <div style="display:flex;justify-content:flex-end;margin-top:var(--space-2)">
+              <button class="btn btn-primary btn-sm" id="save-notif-btn">Salvar preferências</button>
+            </div>
+          </section>
+
+          <!-- ═══ APPEARANCE ═══════════════════════════════════════════════════ -->
+          <section class="settings-panel" id="panel-appearance">
+            <h2 class="settings-section-title">Aparência</h2>
+            <p class="settings-section-sub">Personalize o visual do IBEX CRM do seu jeito.</p>
+
+            <div class="settings-card">
+              <div class="settings-card-header">
+                <span class="settings-card-title">Tema</span>
+                <span class="badge badge-indigo" style="margin-left:auto">14 temas</span>
+              </div>
+              <p class="settings-section-sub" style="margin-bottom:var(--space-4)">
+                Escolha o visual do IBEX CRM. A troca é instantânea e aplicada a todas as páginas.
+              </p>
+              <div class="theme-swatch-grid" id="theme-grid">
+                <!-- Renderizado dinamicamente por js/theme-engine.js -->
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Cor de destaque</span></div>
+              <div class="accent-row">
+                <span class="accent-label">Escolha a cor primária da interface</span>
+                <div class="accent-colors" id="accent-colors-container">
+                  <label class="accent-color-option" title="Índigo (padrão)"><input type="radio" name="accent" value="#6366f1" checked /><span class="accent-swatch" style="background:#6366f1"></span></label>
+                  <label class="accent-color-option" title="Azul sky"><input type="radio" name="accent" value="#0ea5e9" /><span class="accent-swatch" style="background:#0ea5e9"></span></label>
+                  <label class="accent-color-option" title="Violeta"><input type="radio" name="accent" value="#8b5cf6" /><span class="accent-swatch" style="background:#8b5cf6"></span></label>
+                  <label class="accent-color-option" title="Verde esmeralda"><input type="radio" name="accent" value="#10b981" /><span class="accent-swatch" style="background:#10b981"></span></label>
+                  <label class="accent-color-option" title="Âmbar"><input type="radio" name="accent" value="#f59e0b" /><span class="accent-swatch" style="background:#f59e0b"></span></label>
+                  <label class="accent-color-option" title="Rosa"><input type="radio" name="accent" value="#ec4899" /><span class="accent-swatch" style="background:#ec4899"></span></label>
+                  <label class="accent-color-option" title="Vermelho"><input type="radio" name="accent" value="#f43f5e" /><span class="accent-swatch" style="background:#f43f5e"></span></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Interface</span></div>
+              <div class="settings-toggle-row"><div class="settings-toggle-row-left"><span class="settings-toggle-label">Efeito grain (textura)</span><span class="settings-toggle-sub">Sobreposição sutil de textura de filme sobre o fundo</span></div><label class="toggle-switch"><input type="checkbox" id="toggle-grain" checked /><span class="toggle-slider"></span></label></div>
+              <div class="settings-toggle-row"><div class="settings-toggle-row-left"><span class="settings-toggle-label">Animações reduzidas</span><span class="settings-toggle-sub">Desativa micro-animações para melhorar performance</span></div><label class="toggle-switch"><input type="checkbox" id="toggle-reduced-motion" /><span class="toggle-slider"></span></label></div>
+              <div class="settings-toggle-row"><div class="settings-toggle-row-left"><span class="settings-toggle-label">Sidebar compacta por padrão</span><span class="settings-toggle-sub">Iniciar sessões com o menu lateral recolhido</span></div><label class="toggle-switch"><input type="checkbox" id="toggle-compact-sidebar" /><span class="toggle-slider"></span></label></div>
+              <div class="settings-toggle-row"><div class="settings-toggle-row-left"><span class="settings-toggle-label">Mostrar atalhos de teclado</span><span class="settings-toggle-sub">Exibir dicas de atalho nos itens do menu</span></div><label class="toggle-switch"><input type="checkbox" id="toggle-show-shortcuts" checked /><span class="toggle-slider"></span></label></div>
+            </div>
+
+            <div style="display:flex;justify-content:flex-end;margin-top:var(--space-2)">
+              <button class="btn btn-primary btn-sm" id="save-appearance-btn">Salvar aparência</button>
+            </div>
+          </section>
+
+          <!-- ═══ SHORTCUTS ════════════════════════════════════════════════════ -->
+          <section class="settings-panel" id="panel-shortcuts">
+            <h2 class="settings-section-title">Atalhos de Teclado</h2>
+            <p class="settings-section-sub">Navegue pelo IBEX com velocidade máxima usando o teclado.</p>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Navegação</span></div>
+              <div class="shortcut-grid">
+                <div class="shortcut-item"><span class="shortcut-label">Dashboard</span><div class="shortcut-keys"><kbd class="shortcut-key">1</kbd></div></div>
+                <div class="shortcut-item"><span class="shortcut-label">Pipeline</span><div class="shortcut-keys"><kbd class="shortcut-key">2</kbd></div></div>
+                <div class="shortcut-item"><span class="shortcut-label">Leads</span><div class="shortcut-keys"><kbd class="shortcut-key">3</kbd></div></div>
+                <div class="shortcut-item"><span class="shortcut-label">Analytics</span><div class="shortcut-keys"><kbd class="shortcut-key">4</kbd></div></div>
+                <div class="shortcut-item"><span class="shortcut-label">Configurações</span><div class="shortcut-keys"><kbd class="shortcut-key">6</kbd></div></div>
+                <div class="shortcut-item"><span class="shortcut-label">Fechar / Voltar</span><div class="shortcut-keys"><kbd class="shortcut-key">Esc</kbd></div></div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Ações rápidas</span></div>
+              <div class="shortcut-grid">
+                <div class="shortcut-item"><span class="shortcut-label">Novo lead</span><div class="shortcut-keys"><kbd class="shortcut-key">N</kbd></div></div>
+                <div class="shortcut-item"><span class="shortcut-label">Busca global</span><div class="shortcut-keys"><kbd class="shortcut-key">Ctrl</kbd><kbd class="shortcut-key">K</kbd></div></div>
+                <div class="shortcut-item"><span class="shortcut-label">Foco na busca</span><div class="shortcut-keys"><kbd class="shortcut-key">Ctrl</kbd><kbd class="shortcut-key">K</kbd></div></div>
+                <div class="shortcut-item"><span class="shortcut-label">Selecionar todos</span><div class="shortcut-keys"><kbd class="shortcut-key">Ctrl</kbd><kbd class="shortcut-key">A</kbd></div></div>
+                <div class="shortcut-item"><span class="shortcut-label">Exportar CSV</span><div class="shortcut-keys"><kbd class="shortcut-key">E</kbd></div></div>
+                <div class="shortcut-item"><span class="shortcut-label">Filtros</span><div class="shortcut-keys"><kbd class="shortcut-key">F</kbd></div></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══ DATA ══════════════════════════════════════════════════════════ -->
+          <section class="settings-panel" id="panel-data">
+            <h2 class="settings-section-title">Dados &amp; Export</h2>
+            <p class="settings-section-sub">Gerencie, exporte e importe todos os seus dados.</p>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Uso de armazenamento</span></div>
+              <div class="storage-usage" id="storage-usage"><!-- injected --></div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Exportar dados</span></div>
+              <div class="info-row">
+                <div><div class="info-row-label">Exportar todos os leads (JSON)</div><div class="info-row-sub">Arquivo completo com todos os campos e metadados</div></div>
+                <button class="btn btn-secondary btn-sm" id="export-json-btn">⬇ JSON</button>
+              </div>
+              <div class="info-row">
+                <div><div class="info-row-label">Exportar leads (CSV)</div><div class="info-row-sub">Compatível com Excel, Google Sheets e outros</div></div>
+                <button class="btn btn-secondary btn-sm" id="export-csv-btn">⬇ CSV</button>
+              </div>
+              <div class="info-row">
+                <div><div class="info-row-label">Exportar atividades</div><div class="info-row-sub">Histórico completo de interações e contatos</div></div>
+                <button class="btn btn-secondary btn-sm" id="export-activities-btn">⬇ CSV</button>
+              </div>
+              <div class="info-row">
+                <div><div class="info-row-label">Exportar tarefas</div><div class="info-row-sub">Lista de tarefas com status e responsáveis</div></div>
+                <button class="btn btn-secondary btn-sm" id="export-tasks-btn">⬇ CSV</button>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-header"><span class="settings-card-title">Importar dados</span></div>
+              <div class="info-row">
+                <div><div class="info-row-label">Importar leads (CSV)</div><div class="info-row-sub">Colunas: nome, empresa, e-mail, telefone, estágio, valor</div></div>
+                <label class="btn btn-secondary btn-sm" for="import-csv-input" style="cursor:pointer">⬆ Escolher CSV</label>
+                <input type="file" id="import-csv-input" accept=".csv" hidden />
+              </div>
+              <div class="info-row">
+                <div><div class="info-row-label">Restaurar backup (JSON)</div><div class="info-row-sub">Arquivo exportado anteriormente pelo IBEX CRM</div></div>
+                <label class="btn btn-secondary btn-sm" for="import-json-input" style="cursor:pointer">⬆ Escolher JSON</label>
+                <input type="file" id="import-json-input" accept=".json" hidden />
+              </div>
+            </div>
+          </section>
+
+          <!-- ═══ DANGER ════════════════════════════════════════════════════════ -->
+          <section class="settings-panel" id="panel-danger">
+            <h2 class="settings-section-title" style="color:#f43f5e">Zona de Perigo</h2>
+            <p class="settings-section-sub">Ações irreversíveis que afetam todos os dados. Prossiga com cuidado.</p>
+
+            <div class="danger-card">
+              <div class="danger-row">
+                <div><div class="danger-title">Limpar todos os leads</div><div class="danger-desc">Remove permanentemente todos os leads, atividades e tarefas vinculadas. Não pode ser desfeito.</div></div>
+                <button class="btn btn-danger btn-sm" id="clear-leads-btn">Limpar leads</button>
+              </div>
+              <div class="danger-row">
+                <div><div class="danger-title">Resetar para dados demo</div><div class="danger-desc">Apaga todos os dados atuais e restaura o conjunto padrão de demonstração com 15 leads fictícios.</div></div>
+                <button class="btn btn-danger btn-sm" id="reset-demo-btn">Resetar dados</button>
+              </div>
+              <div class="danger-row">
+                <div><div class="danger-title">Limpar cache e configurações</div><div class="danger-desc">Remove todas as preferências salvas (tema, atalhos, filtros). Os dados de leads são preservados.</div></div>
+                <button class="btn btn-danger btn-sm" id="clear-settings-btn">Limpar cache</button>
+              </div>
+              <div class="danger-row" style="background:rgba(244,63,94,0.04)">
+                <div><div class="danger-title">⚠ Excluir tudo</div><div class="danger-desc">Remove TODOS os dados do IBEX CRM deste navegador — leads, tarefas, atividades e configurações. Esta ação é permanente e irreversível.</div></div>
+                <button class="btn btn-danger btn-sm" id="delete-all-btn" style="border-color:#f43f5e;background:rgba(244,63,94,0.2)">Excluir tudo</button>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /settings-content -->
+      </div><!-- /settings-layout -->
+    </main>
+  </div>
+</div>
+
+<div class="toast-container" id="toast-container" role="region" aria-live="polite"></div>
+<div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+<!-- Search overlay (Ctrl+K) -->
+<div class="search-overlay" id="search-overlay" hidden>
+  <div class="search-backdrop" id="search-backdrop"></div>
+  <div class="search-panel">
+    <div class="search-input-wrap">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" class="search-input" id="search-input" placeholder="Buscar leads, tarefas, páginas… (> ações, # páginas)" autocomplete="off" />
+    </div>
+    <div class="search-results" id="search-results"></div>
+    <div class="search-footer"></div>
+  </div>
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/state.js"></script>
+  <script src="js/theme-engine-patch.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/dashboard-premium.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/settings.js"></script>
+</body>
+</html>

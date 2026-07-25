@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#09090b" />
+  <meta name="description" content="IBEX CRM — Gestão de Leads. Visualize, filtre e gerencie todos os seus leads em um único lugar." />
+  <meta name="robots" content="noindex" />
+  <title>IBEX CRM — Leads</title>
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <script src="js/theme-engine.js"></script>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/leads.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><path d='M8 22 L14 10 L20 18 L24 13' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+</head>
+
+<body class="ibex-body" id="ibex-root">
+
+  <!-- Film Grain -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- ─── App Shell ───────────────────────────────────────────────── -->
+  <div class="app-shell" id="app-shell">
+
+    <!-- ══════════════════════════════════════════════════════════
+         SIDEBAR
+    ═══════════════════════════════════════════════════════════ -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Navegação principal">
+
+      <div class="sidebar-header">
+        <a class="sidebar-logo" href="index.html" id="logo-link" aria-label="IBEX CRM — Início">
+          <div class="sidebar-logo-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+              <path d="M6 24L12 10L19 20L24 13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="sidebar-logo-text">IBEX<span class="sidebar-logo-suffix">CRM</span></span>
+        </a>
+        <button class="sidebar-collapse-btn" id="sidebar-collapse-btn" aria-label="Recolher sidebar" title="Recolher (B)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav" role="menubar">
+
+        <div class="sidebar-nav-section">
+          <span class="sidebar-nav-label">Principal</span>
+
+          <a class="sidebar-nav-item" href="index.html" data-page="dashboard" role="menuitem" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+            </span>
+            <span class="nav-label">Dashboard</span>
+            <span class="nav-shortcut" aria-label="Atalho 1">1</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="pipeline.html" data-page="pipeline" role="menuitem" id="nav-pipeline">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 20V10M12 20V4M6 20v-6"/>
+              </svg>
+            </span>
+            <span class="nav-label">Pipeline</span>
+            <span class="nav-shortcut" aria-label="Atalho 2">2</span>
+          </a>
+
+          <a class="sidebar-nav-item active" href="leads.html" data-page="leads" role="menuitem" id="nav-leads">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
+            <span class="nav-label">Leads</span>
+            <span class="nav-shortcut" aria-label="Atalho 3">3</span>
+          </a> 
+
+          <a class="sidebar-nav-item" href="analytics.html" data-page="analytics" role="menuitem" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </span>
+            <span class="nav-label">Analytics</span>
+            <span class="nav-shortcut" aria-label="Atalho 4">4</span>
+          </a>
+        </div>
+
+        <div class="sidebar-nav-section">
+          <span class="sidebar-nav-label">Operações</span>
+
+          <a class="sidebar-nav-item" href="tasks.html" data-page="tasks" role="menuitem" id="nav-tasks">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              </svg>
+            </span>
+            <span class="nav-label">Tarefas</span>
+            <span class="nav-badge" id="tasks-badge" aria-label="Tarefas pendentes">0</span>
+            <span class="nav-shortcut" aria-label="Atalho 5">5</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="team.html" data-page="team" role="menuitem" id="nav-team">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
+            <span class="nav-label">Equipe</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="roles.html" data-page="roles" role="menuitem" id="nav-roles">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </span>
+            <span class="nav-label">Papéis</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="integrations.html" data-page="integrations" role="menuitem" id="nav-integrations">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+              </svg>
+            </span>
+            <span class="nav-label">Integrações</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="inbox.html" data-page="inbox" role="menuitem" id="nav-inbox">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </span>
+            <span class="nav-label">Caixa de Entrada</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="proposals.html" data-page="proposals" role="menuitem" id="nav-proposals">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </span>
+            <span class="nav-label">Propostas</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="automations.html" data-page="automations" role="menuitem" id="nav-automations">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </span>
+            <span class="nav-label">Automações</span>
+            <span class="nav-chip-new">Novo</span>
+          </a>
+        </div>
+
+        <div class="sidebar-nav-section">
+          <span class="sidebar-nav-label">Sistema</span>
+
+          <a class="sidebar-nav-item" href="settings.html" data-page="settings" role="menuitem" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </span>
+            <span class="nav-label">Configurações</span>
+            <span class="nav-shortcut" aria-label="Atalho 6">6</span>
+          </a>
+        </div>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-user" id="sidebar-user-btn" aria-label="Menu do usuário" aria-haspopup="true">
+          <div class="sidebar-user-avatar" id="sidebar-avatar" aria-hidden="true">JH</div>
+          <div class="sidebar-user-info">
+            <span class="sidebar-user-name" id="sidebar-user-name">Juan Heuer</span>
+            <span class="sidebar-user-role" id="sidebar-user-role">Executivo de Contas Sr.</span>
+          </div>
+          <svg class="sidebar-user-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- ══════════════════════════════════════════════════════════
+         MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="main-wrap" id="main-wrap">
+
+      <!-- Topbar -->
+      <header class="topbar" id="topbar" role="banner">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" id="topbar-menu-btn" aria-label="Abrir menu" aria-expanded="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          <div class="topbar-breadcrumb" aria-label="Localização atual">
+            <span class="breadcrumb-item breadcrumb-root">IBEX</span>
+            <span class="breadcrumb-sep" aria-hidden="true">/</span>
+            <span class="breadcrumb-item breadcrumb-current">Leads</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="topbar-search-btn" id="topbar-search-btn" aria-label="Busca global (Ctrl+K)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <span class="topbar-search-label">Buscar…</span>
+            <kbd class="topbar-kbd">⌘K</kbd>
+          </button>
+
+          <button class="btn btn-primary btn-sm" id="topbar-new-lead-btn" aria-label="Criar novo lead (N)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            <span>Novo Lead</span>
+          </button>
+
+          <button class="topbar-icon-btn" id="notifications-btn" aria-label="Notificações" aria-haspopup="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+            <span class="topbar-badge" id="notif-badge" aria-label="notificações não lidas">3</span>
+          </button>
+
+          <button class="topbar-avatar-btn" id="topbar-avatar-btn" aria-label="Seu perfil">
+            <div class="topbar-avatar" id="topbar-avatar" aria-hidden="true">JH</div>
+          </button>
+        </div>
+      </header>
+
+      <!-- ── Leads Page ──────────────────────────────────────── -->
+      <main class="page leads-page" id="leads-page" role="main">
+
+        <!-- Page Header -->
+        <div class="leads-page-header">
+          <div class="leads-page-header-left">
+            <h1 class="page-title">Leads</h1>
+            <span class="leads-count-badge" id="leads-count-badge">— leads</span>
+          </div>
+          <div class="leads-page-header-right">
+            <!-- View toggle -->
+            <div class="view-toggle" role="group" aria-label="Modo de visualização">
+              <button class="view-toggle-btn active" id="view-table-btn" aria-label="Visualização em tabela" title="Tabela">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/>
+                </svg>
+              </button>
+              <button class="view-toggle-btn" id="view-cards-btn" aria-label="Visualização em cards" title="Cards">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+                  <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+              </button>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="export-btn" aria-label="Exportar leads">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Exportar
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="leads-filter-bar" id="leads-filter-bar" role="search" aria-label="Filtros de leads">
+
+          <!-- Search -->
+          <div class="leads-search-wrap">
+            <svg class="leads-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input
+              type="search"
+              class="leads-search-input"
+              id="leads-search"
+              placeholder="Buscar por nome, empresa, e-mail…"
+              autocomplete="off"
+              aria-label="Buscar leads"
+            />
+          </div>
+
+          <!-- Stage filter -->
+          <select class="leads-filter-select" id="filter-stage" aria-label="Filtrar por estágio">
+            <option value="all">Todos os estágios</option>
+            <option value="new">Novo Lead</option>
+            <option value="qualified">Qualificado</option>
+            <option value="proposal">Proposta Enviada</option>
+            <option value="negotiation">Negociação</option>
+            <option value="won">Fechado (Ganho)</option>
+            <option value="lost">Fechado (Perdido)</option>
+          </select>
+
+          <!-- Source filter -->
+          <select class="leads-filter-select" id="filter-source" aria-label="Filtrar por origem">
+            <option value="all">Todas as origens</option>
+            <option value="Indicação">Indicação</option>
+            <option value="LinkedIn">LinkedIn</option>
+            <option value="Site Orgânico">Site Orgânico</option>
+            <option value="Outbound SDR">Outbound SDR</option>
+            <option value="Evento / Webinar">Evento / Webinar</option>
+            <option value="Parceiro">Parceiro</option>
+            <option value="Google Ads">Google Ads</option>
+            <option value="Cold Email">Cold Email</option>
+            <option value="Inbound Marketing">Inbound Marketing</option>
+          </select>
+
+          <!-- Owner filter -->
+          <select class="leads-filter-select" id="filter-owner" aria-label="Filtrar por responsável">
+            <option value="all">Todos os donos</option>
+          </select>
+
+          <!-- Sort -->
+          <select class="leads-filter-select" id="filter-sort" aria-label="Ordenar por">
+            <option value="updatedAt_desc">Mais recentes</option>
+            <option value="createdAt_desc">Mais antigos</option>
+            <option value="dealValue_desc">Maior valor</option>
+            <option value="dealValue_asc">Menor valor</option>
+            <option value="heatScore_desc">Mais quentes</option>
+            <option value="fullName_asc">Nome A–Z</option>
+            <option value="company_asc">Empresa A–Z</option>
+          </select>
+
+          <!-- Clear filters -->
+          <button class="btn btn-ghost btn-sm leads-filter-clear" id="clear-filters-btn" aria-label="Limpar filtros" hidden>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+            Limpar
+          </button>
+        </div>
+
+        <!-- Bulk Actions Bar (appears when rows are selected) -->
+        <div class="leads-bulk-bar" id="leads-bulk-bar" hidden>
+          <span class="bulk-selected-count" id="bulk-count">0 selecionados</span>
+          <div class="bulk-actions">
+            <button class="btn btn-ghost btn-sm" id="bulk-stage-btn">Mudar estágio</button>
+            <button class="btn btn-ghost btn-sm" id="bulk-assign-btn">Atribuir</button>
+            <button class="btn btn-ghost btn-sm bulk-danger" id="bulk-delete-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+              </svg>
+              Arquivar
+            </button>
+          </div>
+          <button class="btn btn-ghost btn-xs" id="bulk-cancel-btn">Cancelar</button>
+        </div>
+
+        <!-- TABLE VIEW -->
+        <div class="leads-table-wrap" id="leads-table-wrap">
+          <table class="leads-table" id="leads-table" aria-label="Tabela de leads">
+            <thead>
+              <tr>
+                <th class="col-check" scope="col">
+                  <input type="checkbox" class="leads-checkbox" id="select-all-checkbox" aria-label="Selecionar todos os leads" />
+                </th>
+                <th class="col-star" scope="col" aria-label="Favorito"></th>
+                <th class="col-lead sortable" scope="col" data-sort="fullName">
+                  Lead
+                  <svg class="sort-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+                </th>
+                <th class="col-company sortable" scope="col" data-sort="company">
+                  Empresa
+                  <svg class="sort-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+                </th>
+                <th class="col-stage" scope="col">Estágio</th>
+                <th class="col-value sortable" scope="col" data-sort="dealValue">
+                  Valor
+                  <svg class="sort-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+                </th>
+                <th class="col-heat sortable hide-mobile" scope="col" data-sort="heatScore">
+                  Heat
+                  <svg class="sort-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+                </th>
+                <th class="col-owner hide-mobile" scope="col">Dono</th>
+                <th class="col-updated hide-mobile sortable" scope="col" data-sort="updatedAt">
+                  Atualizado
+                  <svg class="sort-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+                </th>
+                <th class="col-actions" scope="col" aria-label="Ações"></th>
+              </tr>
+            </thead>
+            <tbody id="leads-tbody">
+              <!-- Injected by leads.js -->
+            </tbody>
+          </table>
+
+          <!-- Empty state -->
+          <div class="leads-empty" id="leads-empty" hidden>
+            <div class="leads-empty-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <p class="leads-empty-title">Nenhum lead encontrado</p>
+            <p class="leads-empty-sub">Tente ajustar os filtros ou crie um novo lead.</p>
+            <button class="btn btn-primary btn-sm" id="empty-new-lead-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Novo Lead
+            </button>
+          </div>
+        </div>
+
+        <!-- CARDS VIEW -->
+        <div class="leads-cards-grid" id="leads-cards-grid" hidden>
+          <!-- Injected by leads.js -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="leads-pagination" id="leads-pagination" aria-label="Paginação">
+          <span class="pagination-info" id="pagination-info">— a — de — leads</span>
+          <div class="pagination-controls">
+            <button class="pagination-btn" id="prev-page-btn" aria-label="Página anterior" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="pagination-pages" id="pagination-pages"></div>
+            <button class="pagination-btn" id="next-page-btn" aria-label="Próxima página">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       LEAD DETAIL DRAWER
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="drawer-overlay" id="drawer-overlay" hidden></div>
+  <aside class="lead-drawer" id="lead-drawer" role="dialog" aria-label="Detalhes do lead" aria-modal="true" hidden>
+
+    <div class="drawer-header">
+      <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Fechar painel">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="drawer-header-info">
+        <div class="drawer-avatar" id="drawer-avatar">JH</div>
+        <div>
+          <h2 class="drawer-lead-name" id="drawer-lead-name">—</h2>
+          <p class="drawer-lead-role" id="drawer-lead-role">—</p>
+        </div>
+      </div>
+      <div class="drawer-header-actions">
+        <button class="btn btn-ghost btn-xs" id="drawer-wa-btn" aria-label="Enviar WhatsApp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          WhatsApp
+        </button>
+        <button class="btn btn-ghost btn-xs" id="drawer-star-btn" aria-label="Favoritar lead">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          Favoritar
+        </button>
+        <button class="btn btn-primary btn-xs" id="drawer-edit-btn" aria-label="Editar lead">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+          Editar
+        </button>
+      </div>
+    </div>
+
+    <!-- Stage selector in drawer -->
+    <div class="drawer-stage-row" id="drawer-stage-row">
+      <span class="drawer-stage-label">Estágio:</span>
+      <div class="drawer-stage-pills" id="drawer-stage-pills" role="group" aria-label="Alterar estágio do lead">
+        <!-- Injected by leads.js -->
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="drawer-tabs" role="tablist" aria-label="Seções do lead">
+      <button class="drawer-tab active" id="tab-info" role="tab" aria-selected="true" aria-controls="drawer-panel-info">Detalhes</button>
+      <button class="drawer-tab" id="tab-activity" role="tab" aria-selected="false" aria-controls="drawer-panel-activity">Atividade</button>
+      <button class="drawer-tab" id="tab-tasks" role="tab" aria-selected="false" aria-controls="drawer-panel-tasks">Tarefas</button>
+      <button class="drawer-tab" id="tab-notes" role="tab" aria-selected="false" aria-controls="drawer-panel-notes">Notas</button>
+    </div>
+
+    <!-- Tab panels -->
+    <div class="drawer-body">
+
+      <!-- Details panel -->
+      <div class="drawer-panel" id="drawer-panel-info" role="tabpanel" aria-labelledby="tab-info">
+        <div class="drawer-section">
+          <h3 class="drawer-section-title">Oportunidade</h3>
+          <div class="drawer-fields" id="drawer-fields-deal"></div>
+        </div>
+        <div class="drawer-section">
+          <h3 class="drawer-section-title">Contato</h3>
+          <div class="drawer-fields" id="drawer-fields-contact"></div>
+        </div>
+        <div class="drawer-section">
+          <h3 class="drawer-section-title">Empresa</h3>
+          <div class="drawer-fields" id="drawer-fields-company"></div>
+        </div>
+        <div class="drawer-section">
+          <h3 class="drawer-section-title">Tags</h3>
+          <div class="drawer-tags" id="drawer-tags"></div>
+        </div>
+      </div>
+
+      <!-- Activity panel -->
+      <div class="drawer-panel hidden" id="drawer-panel-activity" role="tabpanel" aria-labelledby="tab-activity">
+        <div class="drawer-activity-log" id="drawer-activity-log">
+          <!-- Injected -->
+        </div>
+        <button class="btn btn-ghost btn-sm drawer-log-btn" id="drawer-log-activity-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Registrar atividade
+        </button>
+      </div>
+
+      <!-- Tasks panel -->
+      <div class="drawer-panel hidden" id="drawer-panel-tasks" role="tabpanel" aria-labelledby="tab-tasks">
+        <div class="drawer-tasks-list" id="drawer-tasks-list">
+          <!-- Injected -->
+        </div>
+        <button class="btn btn-ghost btn-sm drawer-log-btn" id="drawer-add-task-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nova tarefa
+        </button>
+      </div>
+
+      <!-- Notes panel -->
+      <div class="drawer-panel hidden" id="drawer-panel-notes" role="tabpanel" aria-labelledby="tab-notes">
+        <textarea
+          class="drawer-notes-textarea"
+          id="drawer-notes"
+          placeholder="Adicione notas sobre este lead…"
+          rows="10"
+          aria-label="Notas do lead"
+        ></textarea>
+        <button class="btn btn-primary btn-sm" id="drawer-save-notes-btn">Salvar notas</button>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MODAL: Create / Edit Lead
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-lead-create" role="dialog" aria-label="Criar novo lead" aria-modal="true" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal" id="modal-lead-create-panel">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-lead-title">Novo Lead</h2>
+        <button class="modal-close-btn" data-close-modal aria-label="Fechar modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <form class="modal-form" id="form-lead-create" novalidate autocomplete="off">
+        <input type="hidden" id="lf-lead-id" name="leadId" />
+        <div class="form-section">
+          <span class="form-section-label">Contato</span>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="lf-first-name">Nome <span class="required">*</span></label>
+              <input type="text" class="form-input" id="lf-first-name" name="firstName" placeholder="Bruno" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lf-last-name">Sobrenome <span class="required">*</span></label>
+              <input type="text" class="form-input" id="lf-last-name" name="lastName" placeholder="Alves" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="lf-role">Cargo</label>
+              <input type="text" class="form-input" id="lf-role" name="role" placeholder="CEO, CTO…" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lf-email">E-mail <span class="required">*</span></label>
+              <input type="email" class="form-input" id="lf-email" name="email" placeholder="nome@empresa.com.br" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lf-phone">Telefone / WhatsApp</label>
+            <input type="tel" class="form-input" id="lf-phone" name="phone" placeholder="(11) 99000-0000" />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="form-section-label">Empresa</span>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="lf-company">Empresa <span class="required">*</span></label>
+              <input type="text" class="form-input" id="lf-company" name="company" placeholder="Nome da empresa" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lf-segment">Segmento</label>
+              <input type="text" class="form-input" id="lf-segment" name="segment" placeholder="SaaS B2B, Fintech…" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="form-section-label">Oportunidade</span>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="lf-deal-value">Valor Estimado (R$)</label>
+              <input type="number" class="form-input" id="lf-deal-value" name="dealValue" placeholder="0" min="0" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lf-stage">Estágio</label>
+              <select class="form-select" id="lf-stage" name="stage">
+                <option value="new">Novo Lead</option>
+                <option value="qualified">Qualificado</option>
+                <option value="proposal">Proposta Enviada</option>
+                <option value="negotiation">Negociação</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="lf-source">Origem</label>
+              <select class="form-select" id="lf-source" name="source">
+                <option value="">— Selecione —</option>
+                <option value="Indicação">Indicação</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Site Orgânico">Site Orgânico</option>
+                <option value="Outbound SDR">Outbound SDR</option>
+                <option value="Evento / Webinar">Evento / Webinar</option>
+                <option value="Parceiro">Parceiro</option>
+                <option value="Google Ads">Google Ads</option>
+                <option value="Cold Email">Cold Email</option>
+                <option value="Inbound Marketing">Inbound Marketing</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lf-closing-date">Previsão de Fechamento</label>
+              <input type="date" class="form-input" id="lf-closing-date" name="closingDate" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lf-notes">Notas iniciais</label>
+            <textarea class="form-textarea" id="lf-notes" name="notes" rows="3" placeholder="Contexto do lead, próximos passos…"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close-modal>Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-lead">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Salvar Lead
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container" role="region" aria-label="Notificações do sistema" aria-live="polite"></div>
+
+  <!-- Mobile Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- Notifications Panel -->
+  <div class="notif-panel" id="notif-panel" role="dialog" aria-label="Notificações" hidden>
+    <div class="notif-panel-header">
+      <h2 class="notif-panel-title">Notificações</h2>
+      <button class="btn btn-ghost btn-xs" id="mark-all-read-btn">Marcar todas como lidas</button>
+    </div>
+    <div class="notif-list" id="notif-list"></div>
+  </div>
+
+  <!-- Search overlay (Ctrl+K) -->
+  <div class="search-overlay" id="search-overlay" hidden>
+    <div class="search-backdrop" id="search-backdrop"></div>
+    <div class="search-panel">
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="search-input" id="search-input" placeholder="Buscar leads, tarefas, páginas… (> ações, # páginas)" autocomplete="off" />
+      </div>
+      <div class="search-results" id="search-results"></div>
+      <div class="search-footer"></div>
+    </div>
+  </div>
+
+  <!-- ══ SCRIPTS ══ -->
+  <script src="js/storage.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/theme-engine-patch.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/dashboard-premium.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/leads.js"></script>
+
+</body>
+</html>

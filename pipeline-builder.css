@@ -1,0 +1,451 @@
+/**
+ * IBEX CRM — Pipeline Builder
+ * Tela de administração de pipelines: lista de funis, editor de estágios
+ * (drag-to-reorder), e preview ao vivo em mini-kanban.
+ * @version 1.0.0
+ */
+
+.pb-page {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.pb-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.pb-header-sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  margin-top: 4px;
+}
+
+/* ── Layout: 3 colunas (lista | editor | preview) ────────────────────────── */
+
+.pb-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr 320px;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+
+@media (max-width: 1400px) {
+  .pb-layout { grid-template-columns: 220px 1fr 280px; }
+}
+
+@media (max-width: 1100px) {
+  .pb-layout { grid-template-columns: 200px 1fr; }
+  .pb-preview { display: none; }
+}
+
+.pb-mobile-pipeline-select { display: none; }
+
+@media (max-width: 780px) {
+  .pb-layout { grid-template-columns: 1fr; }
+  .pb-pipeline-list { display: none; }
+
+  /* Sem isto, trocar de pipeline seria impossível no mobile (ver HTML) */
+  .pb-mobile-pipeline-select {
+    display: block;
+    width: 100%;
+    margin-bottom: var(--space-4);
+  }
+}
+
+/* ── Lista de pipelines ───────────────────────────────────────────────────── */
+
+.pb-pipeline-list {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pb-pipeline-list-body {
+  padding: var(--space-2);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pb-pipeline-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: background var(--duration-fast);
+  border: 1px solid transparent;
+}
+
+.pb-pipeline-item:hover { background: var(--color-interactive-hover); }
+
+.pb-pipeline-item.active {
+  background: rgba(99,102,241,0.1);
+  border-color: rgba(99,102,241,0.2);
+}
+
+.pb-pipeline-item-icon {
+  width: 28px; height: 28px;
+  border-radius: var(--radius-md);
+  background: rgba(99,102,241,0.12);
+  color: var(--indigo-400);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.pb-pipeline-item-info { flex: 1; min-width: 0; }
+
+.pb-pipeline-item-name {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.pb-pipeline-item-meta {
+  font-size: 10px;
+  color: var(--color-text-tertiary);
+}
+
+.pb-pipeline-item-default-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--emerald-400);
+  background: rgba(52,211,153,0.1);
+  border: 1px solid rgba(52,211,153,0.25);
+  border-radius: 99px;
+  padding: 1px 6px;
+  flex-shrink: 0;
+}
+
+/* ── Editor de estágios ───────────────────────────────────────────────────── */
+
+.pb-editor {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pb-editor-sub {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  margin-top: 2px;
+}
+
+.pb-default-toggle {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.pb-default-toggle input { accent-color: var(--indigo-500); cursor: pointer; }
+
+.pb-stage-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Card de estágio ──────────────────────────────────────────────────────── */
+
+.pb-stage-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
+  border-left: 3px solid var(--stage-color, var(--indigo-500));
+}
+
+.pb-stage-card:hover {
+  border-color: var(--color-border-default);
+}
+
+.pb-stage-card.dragging {
+  opacity: 0.4;
+  transform: scale(0.98);
+}
+
+.pb-stage-card.drag-over-top    { box-shadow: inset 0 2px 0 var(--indigo-500); }
+.pb-stage-card.drag-over-bottom { box-shadow: inset 0 -2px 0 var(--indigo-500); }
+
+.pb-stage-row1 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pb-stage-drag-handle {
+  color: var(--color-text-disabled);
+  cursor: grab;
+  flex-shrink: 0;
+  padding: 2px;
+}
+.pb-stage-drag-handle:active { cursor: grabbing; }
+
+.pb-stage-icon-btn {
+  width: 32px; height: 32px;
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--color-border-subtle);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color var(--duration-fast);
+}
+.pb-stage-icon-btn:hover { border-color: var(--color-border-default); }
+
+.pb-stage-color-input {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.1);
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: none;
+  -webkit-appearance: none;
+}
+.pb-stage-color-input::-webkit-color-swatch-wrapper { padding: 0; border-radius: 50%; }
+.pb-stage-color-input::-webkit-color-swatch { border: none; border-radius: 50%; }
+
+.pb-stage-name-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid transparent;
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+  padding: 4px 2px;
+  transition: border-color var(--duration-fast);
+  min-width: 0;
+}
+
+.pb-stage-name-input:focus {
+  outline: none;
+  border-bottom-color: var(--indigo-500);
+}
+
+.pb-stage-delete-btn {
+  color: var(--color-text-disabled);
+  padding: 6px;
+  border-radius: var(--radius-md);
+  transition: all var(--duration-fast);
+  flex-shrink: 0;
+}
+.pb-stage-delete-btn:hover { background: rgba(244,63,94,0.1); color: var(--rose-400); }
+
+.pb-stage-row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding-left: 40px;
+}
+
+.pb-stage-field-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-disabled);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.pb-stage-prob-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pb-stage-prob-slider {
+  flex: 1;
+  accent-color: var(--stage-color, var(--indigo-500));
+  cursor: pointer;
+}
+
+.pb-stage-prob-value {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--stage-color, var(--indigo-500));
+  width: 32px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.pb-stage-goal-input {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 5px 8px;
+  font-size: 12px;
+  color: var(--color-text-primary);
+}
+.pb-stage-goal-input:focus { outline: none; border-color: var(--indigo-500); }
+.pb-stage-goal-input::placeholder { color: var(--color-text-disabled); }
+
+/* ── Emoji Picker ─────────────────────────────────────────────────────────── */
+
+.pb-emoji-picker {
+  position: fixed;
+  z-index: var(--z-popover);
+  background: rgba(18,18,22,0.98);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2);
+  box-shadow: var(--shadow-xl);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2px;
+  width: 220px;
+  animation: menuIn 0.15s var(--ease-out-back);
+}
+
+.pb-emoji-option {
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background var(--duration-fast);
+}
+.pb-emoji-option:hover { background: rgba(255,255,255,0.07); }
+
+/* ── Botão adicionar estágio ──────────────────────────────────────────────── */
+
+.pb-add-stage-btn {
+  margin: var(--space-3);
+  padding: 10px;
+  border: 1.5px dashed var(--color-border-default);
+  border-radius: var(--radius-xl);
+  color: var(--color-text-tertiary);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+
+.pb-add-stage-btn:hover {
+  border-color: var(--indigo-500);
+  color: var(--indigo-400);
+  background: rgba(99,102,241,0.04);
+}
+
+/* ── Preview ao vivo ──────────────────────────────────────────────────────── */
+
+.pb-preview {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pb-preview-body {
+  flex: 1;
+  overflow-x: auto;
+  padding: var(--space-3);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.pb-preview-col {
+  min-width: 100px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 8px;
+  flex-shrink: 0;
+  transition: transform var(--duration-fast);
+}
+
+.pb-preview-col:hover { transform: translateY(-2px); }
+
+.pb-preview-col-header {
+  display: flex; align-items: center; gap: 4px;
+  margin-bottom: 6px;
+}
+
+.pb-preview-col-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+
+.pb-preview-col-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pb-preview-col-prob {
+  font-size: 9px;
+  color: var(--color-text-disabled);
+  font-weight: 600;
+}
+
+.pb-preview-card {
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.04);
+  margin-bottom: 4px;
+}
+
+/* ── Empty states ─────────────────────────────────────────────────────────── */
+
+.pb-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  text-align: center;
+  color: var(--color-text-tertiary);
+  gap: 8px;
+  flex: 1;
+}
+
+/* ── Modal: novo pipeline ─────────────────────────────────────────────────── */
+
+.pb-modal-field { margin-bottom: var(--space-4); }
+
+.pb-modal-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+
+.pb-modal-field input {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: 9px 12px;
+  font-size: 13px;
+  color: var(--color-text-primary);
+}
+
+.pb-modal-field input:focus { outline: none; border-color: var(--indigo-500); }

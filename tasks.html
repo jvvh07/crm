@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#09090b" />
+  <meta name="description" content="IBEX CRM — Revenue Intelligence Workstation. Pipeline, Leads e Analytics para equipes de vendas de alta performance." />
+  <meta name="robots" content="noindex" />
+  <title>IBEX CRM — Tarefas</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236366f1'/><path d='M8 22 L14 10 L20 18 L24 13' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <script src="js/theme-engine.js"></script>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Preload critical font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/tasks.css" />
+</head>
+
+<body class="ibex-body" id="ibex-root">
+
+  <!-- ─── Film Grain Overlay ─────────────────────────────────────── -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- ─── App Shell ─────────────────────────────────────────────── -->
+  <div class="app-shell" id="app-shell">
+
+    <!-- ══════════════════════════════════════════════════════════
+         SIDEBAR
+    ═══════════════════════════════════════════════════════════ -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Navegação principal">
+
+      <!-- Logo -->
+      <div class="sidebar-header">
+        <a class="sidebar-logo" href="#" id="logo-link" aria-label="IBEX CRM — Início">
+          <div class="sidebar-logo-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+              <path d="M6 24L12 10L19 20L24 13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="sidebar-logo-text">IBEX<span class="sidebar-logo-suffix">CRM</span></span>
+        </a>
+        <button class="sidebar-collapse-btn" id="sidebar-collapse-btn" aria-label="Recolher sidebar" title="Recolher (B)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Nav -->
+      <nav class="sidebar-nav" role="menubar">
+
+        <div class="sidebar-nav-section">
+          <span class="sidebar-nav-label">Principal</span>
+
+          <a class="sidebar-nav-item" href="index.html" data-page="dashboard" role="menuitem" id="nav-dashboard">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+            </span>
+            <span class="nav-label">Dashboard</span>
+            <span class="nav-shortcut" aria-label="Atalho 1">1</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="pipeline.html" data-page="pipeline" role="menuitem" id="nav-pipeline">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 20V10M12 20V4M6 20v-6"/>
+              </svg>
+            </span>
+            <span class="nav-label">Pipeline</span>
+            <span class="nav-shortcut" aria-label="Atalho 2">2</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="leads.html" data-page="leads" role="menuitem" id="nav-leads">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
+            <span class="nav-label">Leads</span>
+            <span class="nav-shortcut" aria-label="Atalho 3">3</span>
+          </a> 
+
+          <a class="sidebar-nav-item" href="analytics.html" data-page="analytics" role="menuitem" id="nav-analytics">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </span>
+            <span class="nav-label">Analytics</span>
+            <span class="nav-shortcut" aria-label="Atalho 4">4</span>
+          </a>
+        </div>
+
+        <div class="sidebar-nav-section">
+          <span class="sidebar-nav-label">Operações</span>
+
+          <a class="sidebar-nav-item active" href="tasks.html" data-page="tasks" role="menuitem" id="nav-tasks">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              </svg>
+            </span>
+            <span class="nav-label">Tarefas</span>
+            <span class="nav-badge" id="tasks-badge" aria-label="Tarefas pendentes">0</span>
+            <span class="nav-shortcut" aria-label="Atalho 5">5</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="team.html" data-page="team" role="menuitem" id="nav-team">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
+            <span class="nav-label">Equipe</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="roles.html" data-page="roles" role="menuitem" id="nav-roles">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </span>
+            <span class="nav-label">Papéis</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="integrations.html" data-page="integrations" role="menuitem" id="nav-integrations">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+              </svg>
+            </span>
+            <span class="nav-label">Integrações</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="inbox.html" data-page="inbox" role="menuitem" id="nav-inbox">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </span>
+            <span class="nav-label">Caixa de Entrada</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="proposals.html" data-page="proposals" role="menuitem" id="nav-proposals">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </span>
+            <span class="nav-label">Propostas</span>
+          </a>
+
+          <a class="sidebar-nav-item" href="automations.html" data-page="automations" role="menuitem" id="nav-automations">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </span>
+            <span class="nav-label">Automações</span>
+            <span class="nav-chip-new">Novo</span>
+          </a>
+        </div>
+
+        <div class="sidebar-nav-section">
+          <span class="sidebar-nav-label">Sistema</span>
+
+          <a class="sidebar-nav-item" href="settings.html" data-page="settings" role="menuitem" id="nav-settings">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </span>
+            <span class="nav-label">Configurações</span>
+            <span class="nav-shortcut" aria-label="Atalho 6">6</span>
+          </a>
+        </div>
+
+      </nav>
+
+      <!-- Sidebar footer: current user -->
+      <div class="sidebar-footer">
+        <button class="sidebar-user" id="sidebar-user-btn" aria-label="Menu do usuário" aria-haspopup="true">
+          <div class="sidebar-user-avatar" id="sidebar-avatar" aria-hidden="true">JH</div>
+          <div class="sidebar-user-info">
+            <span class="sidebar-user-name" id="sidebar-user-name">Juan Heuer</span>
+            <span class="sidebar-user-role" id="sidebar-user-role">Executivo de Contas Sr.</span>
+          </div>
+          <svg class="sidebar-user-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- ══════════════════════════════════════════════════════════
+         MAIN CONTENT
+    ═══════════════════════════════════════════════════════════ -->
+    <div class="main-wrap" id="main-wrap">
+
+      <!-- ── Topbar ──────────────────────────────────────────── -->
+      <header class="topbar" id="topbar" role="banner">
+
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" id="topbar-menu-btn" aria-label="Abrir menu" aria-expanded="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          <div class="topbar-breadcrumb" id="topbar-breadcrumb" aria-label="Localização atual">
+            <span class="breadcrumb-item breadcrumb-root">IBEX</span>
+            <span class="breadcrumb-sep" aria-hidden="true">/</span>
+            <span class="breadcrumb-item breadcrumb-current" id="breadcrumb-page">Dashboard</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+
+          <!-- Search trigger -->
+          <button class="topbar-search-btn" id="topbar-search-btn" aria-label="Busca global (Ctrl+K)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <span class="topbar-search-label">Buscar…</span>
+            <kbd class="topbar-kbd">⌘K</kbd>
+          </button>
+
+          <!-- New Lead button -->
+          <button class="btn btn-primary btn-sm" id="topbar-new-lead-btn" aria-label="Criar novo lead (N)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            <span>Novo Lead</span>
+          </button>
+
+          <!-- Notifications -->
+          <button class="topbar-icon-btn" id="notifications-btn" aria-label="Notificações" aria-haspopup="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+            <span class="topbar-badge" id="notif-badge" aria-label="3 notificações não lidas">3</span>
+          </button>
+
+          <!-- User avatar (topbar micro) -->
+          <button class="topbar-avatar-btn" id="topbar-avatar-btn" aria-label="Seu perfil">
+            <div class="topbar-avatar" id="topbar-avatar" aria-hidden="true">JH</div>
+          </button>
+
+        </div>
+      </header>
+
+      <!-- ── Page Content ──────────────────────────────────── -->
+      <main class="page-content" id="page-content" role="main" tabindex="-1">
+
+        <div class="page" id="page-tasks" data-page="tasks">
+          <!-- Header -->
+          <div class="page-header" id="tasks-header">
+            <div class="page-header-main">
+              <div>
+                <h1 class="page-title">Tarefas & Agenda</h1>
+                <p class="page-subtitle">Gerencie suas atividades, follow-ups e lembretes.</p>
+              </div>
+              <div class="page-header-actions">
+                <div class="task-filters" role="group" aria-label="Filtro de tarefas">
+                  <button class="btn btn-secondary active" data-filter="all">Todas</button>
+                  <button class="btn btn-secondary" data-filter="pending">Pendentes</button>
+                  <button class="btn btn-secondary" data-filter="done">Concluídas</button>
+                </div>
+                <button class="btn btn-primary" id="btn-new-task">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  Nova Tarefa
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tasks Board Layout -->
+          <div class="tasks-board" id="tasks-board">
+            
+            <!-- Column: Urgent / Overdue -->
+            <div class="task-col" id="col-urgent">
+              <div class="task-col-header">
+                <h3 class="task-col-title">Urgente / Atrasado</h3>
+                <span class="task-col-count" id="count-urgent">0</span>
+              </div>
+              <div class="task-col-body" id="list-urgent">
+                <!-- tasks injected here -->
+              </div>
+            </div>
+
+            <!-- Column: Today -->
+            <div class="task-col" id="col-today">
+              <div class="task-col-header">
+                <h3 class="task-col-title">Para Hoje</h3>
+                <span class="task-col-count" id="count-today">0</span>
+              </div>
+              <div class="task-col-body" id="list-today">
+              </div>
+            </div>
+
+            <!-- Column: Upcoming -->
+            <div class="task-col" id="col-upcoming">
+              <div class="task-col-header">
+                <h3 class="task-col-title">Próximos Dias</h3>
+                <span class="task-col-count" id="count-upcoming">0</span>
+              </div>
+              <div class="task-col-body" id="list-upcoming">
+              </div>
+            </div>
+            
+            <!-- Column: Completed -->
+            <div class="task-col col-completed" id="col-completed">
+              <div class="task-col-header">
+                <h3 class="task-col-title">Concluídas (Recentes)</h3>
+                <span class="task-col-count" id="count-completed">0</span>
+              </div>
+              <div class="task-col-body" id="list-completed">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Task Modal form -->
+        <div class="modal-overlay" id="modal-task-form" role="dialog" aria-modal="true" hidden>
+          <div class="modal-backdrop" data-close-modal></div>
+          <div class="modal" id="modal-task-panel">
+            <div class="modal-header">
+              <h2 class="modal-title" id="task-modal-title">Nova Tarefa</h2>
+              <button class="modal-close-btn" data-close-modal aria-label="Fechar modal">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+            </div>
+            <form class="modal-form" id="form-task" novalidate autocomplete="off">
+              <input type="hidden" id="tf-id" name="id" />
+              
+              <div class="form-section">
+                <div class="form-group">
+                  <label class="form-label" for="tf-title">Título da Tarefa <span class="required">*</span></label>
+                  <input type="text" class="form-input" id="tf-title" name="title" placeholder="Ex: Ligar para confirmar proposta..." required />
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="tf-type">Tipo</label>
+                    <select class="form-select" id="tf-type" name="type">
+                      <option value="call">Ligação</option>
+                      <option value="email">E-mail</option>
+                      <option value="meeting">Reunião</option>
+                      <option value="follow_up" selected>Follow-up</option>
+                      <option value="proposal">Proposta</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="tf-priority">Prioridade</label>
+                    <select class="form-select" id="tf-priority" name="priority">
+                      <option value="low">Baixa</option>
+                      <option value="medium" selected>Média</option>
+                      <option value="high">Alta</option>
+                      <option value="urgent">Urgente</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="tf-lead">Lead Relacionado</label>
+                    <select class="form-select" id="tf-lead" name="leadId">
+                      <option value="">— Nenhum —</option>
+                      <!-- populated dynamically -->
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="tf-due">Data de Vencimento</label>
+                    <input type="date" class="form-input" id="tf-due" name="dueDate" required />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="tf-notes">Observações</label>
+                  <textarea class="form-textarea" id="tf-notes" name="notes" rows="3" placeholder="Detalhes adicionais da tarefa..."></textarea>
+                </div>
+              </div>
+
+              <div class="modal-footer" style="justify-content: space-between;">
+                <button type="button" class="btn btn-danger hidden" id="btn-delete-task">Excluir</button>
+                <div style="display: flex; gap: 8px;">
+                  <button type="button" class="btn btn-secondary" data-close-modal>Cancelar</button>
+                  <button type="submit" class="btn btn-primary" id="btn-save-task">Salvar Tarefa</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </main>
+      <!-- /page-content -->
+
+    </div>
+    <!-- /main-wrap -->
+
+  </div>
+  <!-- /app-shell -->
+
+  <!-- ══════════════════════════════════════════════════════════
+       GLOBAL SEARCH OVERLAY  (Cmd+K)
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="search-overlay" id="search-overlay" role="dialog" aria-label="Busca global" aria-modal="true" hidden>
+    <div class="search-backdrop" id="search-backdrop"></div>
+    <div class="search-panel" id="search-panel">
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="search"
+          class="search-input"
+          id="search-input"
+          placeholder="Buscar leads, tarefas, empresas…"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Campo de busca global"
+        />
+        <kbd class="search-esc-kbd" aria-label="Pressione Escape para fechar">Esc</kbd>
+      </div>
+      <div class="search-results" id="search-results" role="listbox" aria-label="Resultados da busca">
+        <div class="search-empty" id="search-empty">
+          <p>Digite pelo menos 2 caracteres para buscar</p>
+        </div>
+      </div>
+      <div class="search-footer">
+        <span class="search-footer-hint"><kbd>↑↓</kbd> navegar</span>
+        <span class="search-footer-hint"><kbd>Enter</kbd> abrir</span>
+        <span class="search-footer-hint"><kbd>Esc</kbd> fechar</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MODAL: Create Lead
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-lead-create" role="dialog" aria-label="Criar novo lead" aria-modal="true" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal" id="modal-lead-create-panel">
+      <div class="modal-header">
+        <h2 class="modal-title">Novo Lead</h2>
+        <button class="modal-close-btn" data-close-modal aria-label="Fechar modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <form class="modal-form" id="form-lead-create" novalidate autocomplete="off">
+        <div class="form-section">
+          <span class="form-section-label">Contato</span>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="lf-first-name">Nome <span class="required">*</span></label>
+              <input type="text" class="form-input" id="lf-first-name" name="firstName" placeholder="Bruno" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lf-last-name">Sobrenome <span class="required">*</span></label>
+              <input type="text" class="form-input" id="lf-last-name" name="lastName" placeholder="Alves" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="lf-role">Cargo</label>
+              <input type="text" class="form-input" id="lf-role" name="role" placeholder="CEO, CTO, VP de Vendas…" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lf-email">E-mail <span class="required">*</span></label>
+              <input type="email" class="form-input" id="lf-email" name="email" placeholder="nome@empresa.com.br" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lf-phone">Telefone / WhatsApp</label>
+            <input type="tel" class="form-input" id="lf-phone" name="phone" placeholder="(11) 99000-0000" />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="form-section-label">Empresa</span>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="lf-company">Empresa <span class="required">*</span></label>
+              <input type="text" class="form-input" id="lf-company" name="company" placeholder="Nome da empresa" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lf-segment">Segmento</label>
+              <input type="text" class="form-input" id="lf-segment" name="segment" placeholder="SaaS B2B, Fintech…" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <span class="form-section-label">Oportunidade</span>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="lf-deal-value">Valor Estimado (R$)</label>
+              <input type="number" class="form-input" id="lf-deal-value" name="dealValue" placeholder="0" min="0" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lf-stage">Estágio</label>
+              <select class="form-select" id="lf-stage" name="stage">
+                <option value="new">Novo Lead</option>
+                <option value="qualified">Qualificado</option>
+                <option value="proposal">Proposta Enviada</option>
+                <option value="negotiation">Negociação</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="lf-source">Origem</label>
+              <select class="form-select" id="lf-source" name="source">
+                <option value="">— Selecione —</option>
+                <option value="Indicação">Indicação</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Site Orgânico">Site Orgânico</option>
+                <option value="Outbound SDR">Outbound SDR</option>
+                <option value="Evento / Webinar">Evento / Webinar</option>
+                <option value="Parceiro">Parceiro</option>
+                <option value="Google Ads">Google Ads</option>
+                <option value="Cold Email">Cold Email</option>
+                <option value="Inbound Marketing">Inbound Marketing</option>
+                <option value="Direto">Direto</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lf-closing-date">Previsão de Fechamento</label>
+              <input type="date" class="form-input" id="lf-closing-date" name="closingDate" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lf-notes">Notas iniciais</label>
+            <textarea class="form-textarea" id="lf-notes" name="notes" rows="3" placeholder="Contexto do lead, próximos passos…"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close-modal>Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-lead">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Salvar Lead
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       NOTIFICATIONS PANEL
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="notif-panel" id="notif-panel" role="dialog" aria-label="Notificações" hidden>
+    <div class="notif-panel-header">
+      <h2 class="notif-panel-title">Notificações</h2>
+      <button class="btn btn-ghost btn-xs" id="mark-all-read-btn">Marcar todas como lidas</button>
+    </div>
+    <div class="notif-list" id="notif-list">
+      <!-- injected by ui.js -->
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TOAST CONTAINER
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="toast-container" id="toast-container" role="region" aria-label="Notificações do sistema" aria-live="polite">
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MOBILE SIDEBAR OVERLAY
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCRIPTS — load order matters
+  ═══════════════════════════════════════════════════════════ -->
+  <!-- 1. Data layer -->
+  <script src="js/storage.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/theme-engine-patch.js"></script>
+
+  <!-- 2. Utilities -->
+  <script src="js/utils.js"></script>
+
+  <!-- 3. External libs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+  <!-- 4. UI modules -->
+  <script src="js/charts.js"></script>
+  <script src="js/ui.js"></script>
+
+  <!-- 5. App orchestrator (must be last) -->
+  <script src="js/tasks.js"></script>
+  <script src="js/app.js"></script>
+  <!-- Componentes compartilhados (confirm dialog, avatar) -->
+  <script src="js/components.js"></script>
+
+</body>
+</html>

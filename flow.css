@@ -1,0 +1,258 @@
+/**
+ * IBEX CRM — Flow Builder Styles
+ * Estilo premium inspirado em n8n e Notion.
+ */
+
+:root {
+  --node-bg: rgba(24, 24, 27, 0.85);
+  --node-border: rgba(255, 255, 255, 0.08);
+  --node-width: 220px;
+  --grid-size: 20px;
+  --grid-color: rgba(255, 255, 255, 0.03);
+}
+
+/* ── Canvas ──────────────────────────────────────────────────────────── */
+
+.automations-builder {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #09090b;
+}
+
+.builder-canvas {
+  flex: 1;
+  position: relative;
+  background-color: #09090b;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  cursor: grab;
+  overflow: hidden; /* Canvas fixo, nós que se movem */
+  min-height: 600px;
+}
+
+.builder-canvas:active {
+  cursor: grabbing;
+}
+
+.nodes-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10000px; /* Grande o suficiente para scroll */
+  height: 10000px;
+  pointer-events: none;
+}
+
+.flow-node {
+  pointer-events: all;
+}
+
+/* ── SVG Connections ─────────────────────────────────────────────────── */
+
+.flow-svg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10000px;
+  height: 10000px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.flow-line {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 2;
+  transition: stroke 0.2s;
+}
+
+.flow-line:hover {
+  stroke: var(--primary);
+}
+
+/* ── Nodes (Notion Style) ─────────────────────────────────────────────── */
+
+.flow-node {
+  position: absolute;
+  width: var(--node-width);
+  background: #18181b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  user-select: none;
+  z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.flow-node:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.flow-node.selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.node-header {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.node-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.node-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #f4f4f5;
+}
+
+.node-body {
+  padding: 12px;
+  font-size: 11px;
+  color: #a1a1aa;
+  line-height: 1.4;
+}
+
+.node-port {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #27272a;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  z-index: 20;
+}
+
+.node-port:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.node-port-in { left: -4px; top: 50%; transform: translateY(-50%); }
+.node-port-out { right: -4px; top: 50%; transform: translateY(-50%); }
+
+
+/* ── Toolbox ────────────────────────────────────────────────────────── */
+
+.flow-toolbox {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(24, 24, 27, 0.9);
+  border: 1px solid var(--node-border);
+  border-radius: 99px;
+  padding: 6px;
+  display: flex;
+  gap: 4px;
+  backdrop-filter: blur(16px);
+  z-index: 100;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+}
+
+.toolbox-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toolbox-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.toolbox-btn.primary {
+  background: var(--primary);
+  color: white;
+}
+
+/* ── Minimap ────────────────────────────────────────────────────────── */
+
+.flow-minimap {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 150px;
+  height: 100px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--node-border);
+  border-radius: 8px;
+  z-index: 100;
+}
+
+/* ── Action Picker Overlay (Notion Style) ───────────────────────────── */
+
+.action-menu {
+  position: absolute;
+  width: 280px;
+  background: #18181b;
+  border: 1px solid var(--node-border);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  padding: 8px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.action-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.action-menu-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ami-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ami-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.ami-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.ami-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+}
